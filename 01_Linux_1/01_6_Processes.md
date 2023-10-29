@@ -1,11 +1,7 @@
 # Processes
-Processen in Linux kunnen worden onderverdeeld in drie categorieën: Daemons (achtergrondprocessen), Services (diensten) en Programma's.
+Processen in Linux kunnen worden onderverdeeld in drie categorieën: Daemons (achtergrondprocessen), Services (diensten) en Programma's. Een daemon draait op de achtergrond en is niet-interactief. Een dienst reageert op verzoeken van programma's.
 
-Een daemon draait op de achtergrond en is niet-interactief. Een dienst reageert op verzoeken van programma's. Een dienst kan interactief zijn. Een programma wordt uitgevoerd en gebruikt door gebruikers (bijvoorbeeld Vim).
-
-Om verbinding te maken met externe Linux-machines (virtueel of niet), kun je ssh (secure shell) gebruiken. Om deze verbinding met je machine mogelijk te maken, moet je de ssh-dienst starten door de ssh-daemon te starten. Voordat ssh er was, was er telnet, wat in feite hetzelfde doet, behalve dat de verbinding niet versleuteld is, dus het is niet veilig. In deze oefening zullen we telnet gebruiken om onze ssh-verbinding niet te verstoren, maar het wordt niet aanbevolen voor gebruik.
-
-Een proces is een exemplaar van draaiende code. Alle code is ergens in bestanden opgeslagen op het systeem. Om deze bestanden te vinden, kijkt Linux in de $PATH-variabele (meer hierover in een latere oefening). Elk proces heeft zijn eigen PID (Process ID, proces-ID-nummer).
+Om verbinding te maken met externe Linux-machines (virtueel of niet), kun je ssh (secure shell) gebruiken. Om deze verbinding met je machine mogelijk te maken, moet je de ssh-dienst starten door de ssh-daemon te starten. Voordat ssh er was, was er telnet, wat in feite hetzelfde doet, behalve dat de verbinding niet versleuteld is, dus het is niet veilig. 
 
 ## Key-terms
 * __Daemons | Telnet:__  
