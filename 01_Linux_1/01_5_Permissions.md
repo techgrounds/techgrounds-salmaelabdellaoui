@@ -51,7 +51,8 @@ Maak een file en maak deze executabel. Maak van deze file een long list aan en b
 * https://chat.openai.com  
 * https://manpages.ubuntu.com/manpages/jammy/man1/virt-ls.1.html  
 * https://www.atatus.com/blog/ls-command-in-linux-with-example/#:~:text=The%20%22ls%20%2Dl%22%20option,as%20some%20of%20the%20attributes   
-* https://linuxconfig.org/understanding-of-ls-command-with-a-long-listing-format-output-with-permission-bits 
+* https://linuxconfig.org/understanding-of-ls-command-with-a-long-listing-format-output-with-permission-bits   
+* https://www.guru99.com/file-permissions.html 
 
 ### Ervaren problemen
 Ik heb hier geen problemen ervaren.
