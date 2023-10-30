@@ -27,7 +27,8 @@ Waar staat je DHCP server op jouw netwerk? Wat zijn de configuraties hiervan?
 ### Gebruikte bronnen
 * https://nl.jf-parede.pt/what-are-network-devices  
 * https://www.youtube.com/watch?v=gVrXLq5E-CQ  
-* https://www.imperva.com/learn/application-security/osi-model/#:~:text=The%20OSI%20model%20helps%20network,their%20products%20should%20work%20with. 
+* https://www.imperva.com/learn/application-security/osi-model/#:~:text=The%20OSI%20model%20helps%20network,their%20products%20should%20work%20with.   
+* https://chat.openai.com  
 
 ### Ervaren problemen
 Ik heb hier geen problemen ervaren. 
