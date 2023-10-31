@@ -20,7 +20,8 @@ Wireshark is een zeer populaire en krachtige netwerkanalysetool, ook wel een "pa
 
 ## Opdracht
 ### Gebruikte bronnen
-* https://chat.openai.com  
+* https://chat.openai.com    
+* https://www.guru99.com/layers-of-osi-model.html 
 
 ### Ervaren problemen
 [Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
@@ -54,5 +55,4 @@ Het introduceren van een aangepast protocol vereist een diepgaand begrip van net
   
 In de volgende screenshot is te zien hoe wireshark eruit ziet als ik mijn eigen netwerk data 'opneem':
 ![SS.2_Inloggen](../00_includes/02_AWS/10.Wireshark.test.png)  
-  
-    
+
