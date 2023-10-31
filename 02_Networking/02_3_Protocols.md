@@ -1,5 +1,5 @@
 # Protocols
-[Geef een korte beschrijving van het onderwerp]
+Protocollen in netwerkdata zijn gestandaardiseerde regels en afspraken die bepalen hoe gegevens worden uitgewisseld en gecommuniceerd in computernetwerken. Ze spelen een cruciale rol in netwerkcommunicatie door te zorgen voor consistentie en interoperabiliteit tussen verschillende apparaten en systemen, ongeacht hun fabrikant of locatie. 
 
 ## Key-terms
 * Wireshark:  
