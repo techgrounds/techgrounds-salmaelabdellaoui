@@ -18,7 +18,9 @@ Wireshark is een zeer populaire en krachtige netwerkanalysetool, ook wel een "pa
 * Foreign Address: Dit is het externe IP-adres en poortnummer waarmee je systeem is verbonden. 
 * (state): Dit geeft de toestand aan van de verbinding. 
 
-## Opdracht
+## Opdracht  
+Identificeer meerdere OSI lagen en noem bij elke laag een bijbehorende protocol. Kom erachter wie bepaald welke protocollen er gebruikt dienen te worden en wat nodig is om een nieuwe te introduceren. Installeer Wireshark en 'capture' een deel van jouw eigen netwerk data. Probeer dit te begrijpen.  
+
 ### Gebruikte bronnen
 * https://chat.openai.com    
 * https://www.guru99.com/layers-of-osi-model.html 
