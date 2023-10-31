@@ -27,7 +27,9 @@ Wireshark is een zeer populaire en krachtige netwerkanalysetool, ook wel een "pa
 
 ### Resultaat    
   
-
+Hieronder zijn alle OSI layers benoemd met hun bijbehorende servers:   
+  
+  ![SS.2_Inloggen](../00_includes/02_AWS/9.OSI-servers.png)    
   
   De onderstaande screenshot geeft actieve TCP verbindingen weer op mijn computer. De onderliggende TCP-verbinding bevindt zich op OSI-laag 4 (transportlaag).
 ![SS.2_Inloggen](../00_includes/02_AWS/7.Active.TCP.png)      
@@ -50,3 +52,7 @@ Het introduceren van een aangepast protocol vereist een diepgaand begrip van net
 5. Implementatie: Implementeer het protocol in de gewenste systemen of apparaten.
 6. Validatie: Valideer het protocol in realistische scenario's om ervoor te zorgen dat het aan de verwachtingen voldoet.   
   
+In de volgende screenshot is te zien hoe wireshark eruit ziet als ik mijn eigen netwerk data 'opneem':
+![SS.2_Inloggen](../00_includes/02_AWS/10.Wireshark.test.png)  
+  
+    
