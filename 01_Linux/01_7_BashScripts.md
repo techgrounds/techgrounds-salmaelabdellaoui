@@ -85,6 +85,19 @@ In de volgende screenshot is te zien hoe ik een file aanmaak met bash extentie, 
 
 __Opdracht 3__  
   
+In de voolgende screenshot is te zien welk commando's ik gebruik voor het maken van een nano script met bash extentie, die ik vervolgens executabel maak, waarna ik de script uitvoer.   
+  
+![SS.2_Inloggen](../00_includes/24.Biggerthan5AssignmentExecution.png)    
+  
+In de volgende screenshot is te zien welke script ik heb gebruikt om dit te bewerkstelligen.  
+  
+![SS.2_Inloggen](../00_includes/25.SH.script.png)   
 
+In de volgende screenshots is te zien wat de uitkomst is als het getal groter is dan 5 en als het getal kleiner is dan 5.   
+  
+![SS.2_Inloggen](../00_includes/26.outputHogerDan5.png)  
+  
+![SS.2_Inloggen](../00_includes/27.outputLagerDan5.png)  
+  
 
 

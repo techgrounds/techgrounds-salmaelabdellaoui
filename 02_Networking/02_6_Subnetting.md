@@ -45,7 +45,7 @@ Plaats de architectuur die je hebt gemaakt inclusief een korte uitleg in de Gith
 * https://www.techopedia.com/nl/8-stappen-om-ip-subnetten-te-begrijpen   
 * https://app.diagrams.net   
 * https://www.calculator.net/ip-subnet-calculator.html  
-* https://www.youtube.com/watch?v=ecCuyq-Wprc
+* https://www.youtube.com/watch?v=ecCuyq-Wprc 
 
 ### Ervaren problemen
 Ik heb hier geen problemen ervaren.
