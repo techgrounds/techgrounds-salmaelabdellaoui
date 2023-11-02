@@ -1,5 +1,5 @@
 # Network Case Study
- In een casestudie combineren we je eerder verworven kennis met een voorbeeld uit het echte leven (of een fictief voorbeeld dat sterk lijkt op een echte situatie). In deze casestudie neem je de rol aan van een netwerkbeheerder die een netwerk opzet in het nieuwe kantoor van een kleine e-commercebedrijf.
+ In een casestudie combineren we eerder verworven kennis met een voorbeeld uit het echte leven (of een fictief voorbeeld dat sterk lijkt op een echte situatie). In deze casestudie neem je de rol aan van een netwerkbeheerder die een netwerk opzet in het nieuwe kantoor van een kleine e-commercebedrijf.
 
 ## Key-terms
 X

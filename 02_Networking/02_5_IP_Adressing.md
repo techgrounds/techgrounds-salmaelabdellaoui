@@ -35,9 +35,9 @@ Probeer het privé IP adres van je mobiel te veranderen naar een adres buiten je
 Geen problemen ervaren.
 
 ### Resultaat
-Mijn publieke IP adres op mijn telefoon is 192.168.178.1 en die van mijn laptop ook. Ze zijn dus beide hetzelfde. Het publieke IP-adres is het IP-adres dat aan jouw thuisnetwerk is toegewezen door jouw internetprovider (ISP). Dit publieke IP-adres is uniek voor de gehele thuisnetwerk en wordt gebruikt om met het bredere internet te communiceren. Alle apparaten in de thuisnetwerk delen dit ene publieke IP-adres wanneer ze via de router verbinding maken met internet.  
+Mijn publieke IP adres op mijn telefoon en die van mijn laptops zijn beide hetzelfde. Het publieke IP-adres is het IP-adres dat aan jouw thuisnetwerk is toegewezen door jouw internetprovider (ISP). Dit publieke IP-adres is uniek voor de gehele thuisnetwerk en wordt gebruikt om met het bredere internet te communiceren. Alle apparaten in de thuisnetwerk delen dit ene publieke IP-adres wanneer ze via de router verbinding maken met internet.  
   
-Mijn prive IP adres van mijn telefoon is: 192.168.178.216 en die van mijn laptop is 192.168.178.240, ze zijn dus niet hetzelfde. Dit heeft te maken met het gebruik van dynamische IP-adressen en het functioneren van een DHCP-server (Dynamic Host Configuration Protocol) in het thuisnetwerk.  
+Mijn prive IP adres van mijn telefoon is: 192.168.178.XXX en die van mijn laptop is 192.168.178.XXX, ze zijn niet hetzelfde. Dit heeft te maken met het gebruik van dynamische IP-adressen en het functioneren van een DHCP-server (Dynamic Host Configuration Protocol) in het thuisnetwerk.  
   
 Bij het veranderen van de IP adres van mijn mobiel naar die van mijn laptop heb ik de volgende probleem ondervonden:   
 
