@@ -36,4 +36,55 @@ Maak een script dat een willekeurig getal genereert tussen 1 en 10, dit getal op
 Ik heb hier geen probelemen ervaren. 
 
 ### Resultaat
-[Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).] 
+__Opdracht 1__  
+
+In de volgende screenshot is te zien hoe de directory 'scripts' is gemaakt. Ook kan je in deze screenshot zien hoe ik een file verplaats in een directory.     
+
+![SS.2_Inloggen](../00_includes/17.make.directory.moveFileToDirectory.png)    
+  
+In de volgende screenshot laat ik zien welke shell ik heb in mijn VM middels de commando echo $SHELL en maak ik een file aan met een bashscript extentie.   
+  
+![SS.2_Inloggen](../00_includes/18.Add.scripts.PATHenappendslinetotextfile.png)   
+  
+Om de directory genaamd scripts toe te voegen aan de PATH-variable heb ik de volgende stappen genomen (ook te zien in de screenshot hierboven):  
+
+```
+nano ~/.bashrc
+```     
+Na het uitvoeren van deze stap opent de editor genaamd 'nano'. Vervolgens plaats ik in deze file de volgende line: export PATH="/home/salma/scripts:$PATH"   
+  
+Vervolgens zorg je ervoor dat de file met de veranderingen meteen uitgevoerd wordt middels de volgende commando:  
+```
+source ~/.bashrc
+```  
+De volgende stap is het aanmaken van een file met een bash extentie en het dient de volgende script te bevatten:   
+
+ ![SS.2_Inloggen](../00_includes/35.nantekst.png)   
+   
+  Vervolgens dien je de file executable te maken door middel van de chmod +x commando. Vervolgens kan je de inhoud van de bash script met behulp van de volgende commando:   
+  ```
+./<my_script.sh>
+```   
+In de volgende screenshot is te zien hoe ik de httpd-paket installeer/ activeer en inschakelt.   
+![SS.2_Inloggen](../00_includes/19.Installhttpd,activate,enable.png)  
+
+In de text file die aangemaakt is en die install_httpd.sh heet, bevat de volgende script:   
+![SS.2_Inloggen](../00_includes/21.nanotextscriptinmyterminal.png)    
+  
+Om de status van de httpd pakket aan te tonen is in de volgende screenshot te zien welke commando is gebruikt en wat het resultaat daarvan is:  
+![SS.2_Inloggen](../00_includes/20.status.png)   
+  
+__Opdracht 2__  
+
+In de volgende screenshot is te zien hoe ik een file aanmaak met bash extentie, deze  maak ik executable en voer ik vervolgens uit:  
+ ![SS.2_Inloggen](../00_includes/22.generatingrandomnumberandexecutingit.png)  
+   
+  De textfile die ik hierboven heb aangemaakt bevat de volgende tekst: 
+![SS.2_Inloggen](../00_includes/23.MytextinNanoforthecommands.png)    
+  
+
+__Opdracht 3__  
+  
+
+
+
