@@ -50,20 +50,21 @@ Plaats de architectuur die je hebt gemaakt inclusief een korte uitleg in de Gith
 Ik heb hier geen problemen ervaren.
 
 ### Resultaat
-![SS.2_Inloggen](../00_includes/02_AWS/11.Mijn.netwerkarchitectuur.drawio.png)   
+![SS.2_Inloggen](../00_includes/02_AWS/13.Mijn.netwerkarchitectuur.drawio.png)   
   
-Dit is mijn netwerkarchitectuur met uitleg over de subnets onder aan de afbeelding.   
+Dit is mijn netwerkarchitectuur met uitleg over de subnets onder aan de afbeelding.     
+
 Uitleg:  
 De originele IP adres is boven in de afbeelding weergegeven, het gaat om de volgende ip adres: 192.168.1. 192.168 geeft aan dat het gaat om een prive adres.   
   
-  LAN staat natuurlijk voor Local Area Network voor een bepaald gebied (kantoor ruimte etc.). In de opdracht wordt aangegeven dat er een subnet aangemaakt dient te worden die alleen van binnen de LAN bereikbaar is en waar minimaal 15 hostst aan kunnen deelnemen. Vandaar dat ik mijn hostst binnen in de LAN subnet heb geplaats (mijn netwerkarchitectuur afbeelding). De subnet die ik heb gebruikt is 0/28 (CIDR notatie). Ik heb de volgende tabel geraadpleegd om dit te achterhalen:   
+  LAN staat natuurlijk voor Local Area Network voor een bepaald gebied (kantoor ruimte etc.). In de opdracht wordt aangegeven dat er een subnet aangemaakt dient te worden die alleen van binnen de LAN bereikbaar is en waar minimaal 15 hostst aan kunnen deelnemen. Vandaar dat ik mijn hostst binnen in de LAN subnet heb geplaats (mijn netwerkarchitectuur afbeelding). De subnet die ik heb gebruikt is 0/27 (CIDR notatie). Ik heb de volgende tabel geraadpleegd om dit te achterhalen:   
     
 ![SS.2_Inloggen](../00_includes/02_AWS/12.subnettingTabel.png)   
   
-Hierin is duidelijk te zien dat de subnetmask van /28 16 hostst kan hebben, dit voldoet aan de eis gesteld in de opdracht. Omdat dit de eerste subnet groep is begint het bij 0. vandaar dat je 0/28 krijgt, er zijn namelijk nog geen hostst account gebruikt van de 256.   
+Hierin is duidelijk te zien dat de subnetmask van /27 32 hostst kan hebben, dit voldoet aan de eis gesteld in de opdracht. Omdat dit de eerste subnet groep is begint het bij 0. vandaar dat je 0/27 krijgt, er zijn namelijk nog geen hostst account gebruikt van de 256.   
   
-In de volgende opdracht wordt gevraagd om een subnet aan te maken die toegang heeft tot het internet middels een router met NAT functionaliteiten en deze subnet dient plek te hebben voor minimaal 30 hostst. Mijn antwoordt hierop is, 192.168.1.16/27.   
+In de volgende opdracht wordt gevraagd om een subnet aan te maken die toegang heeft tot het internet middels een router met NAT functionaliteiten en deze subnet dient plek te hebben voor minimaal 30 hostst. Mijn antwoordt hierop is, 192.168.1.32/27.   
   
-Dit keer begint het niet bij 0 maar bij 16, dit omdat er al 16 hosts gebruik maken van de algemene IP adres. De keuze voor /27 als subnetmask heeft te maken met het aantal hostst die het kan hebben en dat is 32. Dit voldoet aan de gestelde eis in de opdracht.   
+Dit keer begint het niet bij 0 maar bij 32, dit omdat er al 32 hosts gebruik maken van de algemene IP adres. De keuze voor /27 als subnetmask heeft te maken met het aantal hostst die het kan hebben en dat is 32. Dit voldoet aan de gestelde eis in de opdracht.   
   
-In de volgende opdracht wordt er gevraagd naar een subnet met een network gateway naar het internet en die minimaal 5 hostst kan hebben. Ik heb gekozen voor de volgende IP adres, 192.168.1.48/29. Dit keer start het host gedeelte van de IP adres niet bij 0 of bij 16 maar bij 48. Dit omdat er al 48 hosts onderdeel zijn van dezelfde IP adres. Ik heb gekozen voor de subnet mask /29 omdat die 8 hosts kan dienen en dit voldoet aan de eisen gesteld in de opdracht. 
+In de volgende opdracht wordt er gevraagd naar een subnet met een network gateway naar het internet en die minimaal 5 hostst kan hebben. Ik heb gekozen voor de volgende IP adres, 192.168.1.64/29. Dit keer start het host gedeelte van de IP adres niet bij 0 of bij 16 maar bij 64. Dit omdat er al 64 hosts onderdeel zijn van dezelfde IP adres. Ik heb gekozen voor de subnet mask /29 omdat die 8 hosts kan dienen en dit voldoet aan de eisen gesteld in de opdracht. 
