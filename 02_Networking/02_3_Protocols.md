@@ -26,7 +26,7 @@ Identificeer meerdere OSI lagen en noem bij elke laag een bijbehorende protocol.
 * https://www.guru99.com/layers-of-osi-model.html 
 
 ### Ervaren problemen
-[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+Geen problemen ervaren.
 
 ### Resultaat    
   
