@@ -29,7 +29,8 @@ Probeer het privé IP adres van je mobiel te veranderen naar een adres buiten je
 ### Gebruikte bronnen
 * https://chat.openai.com    
 * https://support.microsoft.com/nl-nl/windows/uw-ip-adres-zoeken-in-windows-f21a9bbc-c582-55cd-35e0-73431160a1b9   
-* https://nordvpn.com/nl/what-is-my-ip/#:~:text=Klik%20op%20%27Start%27%20%3E%20%27,naast%20%27IPv4%2Dadres%27. 
+* https://nordvpn.com/nl/what-is-my-ip/#:~:text=Klik%20op%20%27Start%27%20%3E%20%27,naast%20%27IPv4%2Dadres%27   
+* https://nl.wikibooks.org/wiki/Netwerkprotocollen 
 
 ### Ervaren problemen
 Geen problemen ervaren.
