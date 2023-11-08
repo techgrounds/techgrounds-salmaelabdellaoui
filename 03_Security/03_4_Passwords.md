@@ -24,9 +24,7 @@ De kernfunctie van hashing is het voorkomen dat er met informatie of een bestand
 * https://crackstation.net 
 * https://nordvpn.com/nl/blog/hashen/#:~:text=Betekenis%20hashen%3A%20het%20Engelse%20woord,omzet%20in%20een%20unieke%20tekenreeks.  
 * https://fastestvpn.com/nl/blog/wat-is-een-regenboogtafelaanval/#:~:text=Kortom%2C%20een%20regenboogtafelaanval%20is%20een,staat%20als%20de%20%22regenboogtabel%22.
-
-### Ervaren problemen
-Ik heb hier geen problemen ervaren. 
+* https://www.cyberciti.biz/faq/understanding-etcshadow-file/
 
 ### Resultaat
 __Wat is Hashing?__ Hashing is het proces waarbij gegevens worden omgezet in een vaste lengte van willekeurige tekens, die meestal een reeks cijfers en letters zijn. Deze gegenereerde tekenreeks staat bekend als een "hashwaarde" of "hashcode." Het belangrijkste kenmerk van hashing is dat het een eenrichtingsproces is, wat betekent dat het erg moeilijk is om de oorspronkelijke gegevens vanuit de hashwaarde te reconstrueren.  
@@ -48,4 +46,18 @@ __Ik heb de volgende Hashing codes gekraakt middels de regenboog tabel:__
 
 ![SS.2_Inloggen](../00_includes/03_Security/10.Hashing.png) 
 
-De ene was zwak, zoals aangegeven in de opdracht, die is dus ook makkelijk te kraken. De ander niet. 
+De ene was zwak, zoals aangegeven in de opdracht, die is dus ook makkelijk te kraken. De ander niet.   
+  
+In de volgende screenshot is te zien hoe ik een nieuwe user aanmaak genaamd 'rainbow' en vervolgens een wachtwoord geef '12345', waarna ik de lijst opvraag met wachtwoorden die getoond worden in een hash formaat. 
+
+![SS.2_Inloggen](../00_includes/03_Security/11.newuser.pass_hash.png)
+
+Vervolgens heb ik de hash wachtwoord ingevoerd in een rainbow tabel en dit was de uitkomst:
+
+![SS.2_Inloggen](../00_includes/03_Security/12.hash_rainbowTable.png)   
+  
+De reden dat het niet achterhaald kan worden, is omdat het gezout is. De $6 wat je ziet in mijn hash wachtwoord houdt in dat we te maken hebben met een algoritme prefix SHA-512 hash (512 bits). Het stukje wat gezout is in mijn wachtwoord is als volgt: NrmqbY.NCsywXjlR, dit is het eerste stukje wat na de $6 komt tot de volgende dollar teken. 
+
+De volgende hash wachtwoord is van mijn peer:
+![SS.2_Inloggen](../00_includes/03_Security/13.peer_hash.png)   
+Je ziet dat ook hier de $6 algoritme wordt gebruikt en dat het gezout is. Verder zie je dat de opvolgende tekens verschillen met die van mij, dat is ook wat je verwacht. 
