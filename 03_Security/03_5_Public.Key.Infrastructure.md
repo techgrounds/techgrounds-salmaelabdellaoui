@@ -75,5 +75,72 @@ Als ik mijn certificaat open zie ik het volgende:
 ![SS.2_Inloggen](../00_includes/03_Security/19.openedMycertificate-part1.png)
 ![SS.2_Inloggen](../00_includes/03_Security/20.openedMycertificate-part2.png)   
   
+Nu ik mijn zelfondertekende certificaat en sleutel heb, moeten ik mijn Apache-configuratie bijwerken om het te gebruiken. 
 
+Open een nieuw bestand in de /etc/apache2/sites-available directory en ik heb de volgende tekst erin geplaatst.
+
+```
+sudo nano /etc/apache2/sites-available/your_domain_or_ip.conf
+```
+ ![SS.2_Inloggen](../00_includes/03_Security/21.VirtualHostConfi.png)    
+
+ Zorg ervoor dat de common name die je hebt opgegeven in jouw certificaat hetzelfde is als de servername. 
+
+ Laten we nu een DocumentRoot maken en er een HTML-bestand in plaatsen, voor testdoeleinden: 
+
+```
+sudo mkdir /var/www/your_domain_or_ip
+```
+```
+sudo nano /var/www/your_domain_or_ip/index.html
+```
+Nu moet het configuratiebestand ingeschakeld worden met de a2ensite-tool. 
   
+```
+sudo a2ensite your_domain_or_ip.conf
+```
+Vervolgens vraagt het systeem om een reload om het te activeren. 
+```
+sudo systemctl reload apache2
+```
+En om te kijken of het goed geconfigureerd is gebruik ik de volgende commando: 
+```
+sudo apache2ctl configtest
+```
+![SS.2_Inloggen](../00_includes/03_Security/22.configureer.png) 
+![SS.2_Inloggen](../00_includes/03_Security/23.reload.configtest.png)  
+
+De eerste regel is een bericht dat aangeeft dat de ServerName-directive niet globaal is ingesteld. Als ik van dat bericht af wil, kan ik de ServerName instellen op het domein of IP-adres van mijn server in /etc/apache2/apache2.conf. Dit is optioneel, aangezien het bericht geen schade zal aanrichten.
+
+Mijn uitvoer bevat Syntax OK, dus mijn configuratiebestand bevat geen syntaxisfouten.  
+
+Hiermee heb ik mijn certificaat geconfigureerd in mijn Apache server. 
+
+Met de volgende commando heb ik mijn certificaat nogmaals gecheckt. 
+
+```
+curl --verbose https://3.121.40.175:58012/
+```
+
+![SS.2_Inloggen](../00_includes/03_Security/24.certificaatcheck.png) 
+
+Daaruit is te zien dat er een connectie heeft plaats gevonden en dat mijn certificaat is gelokaliseerd. 
+
+De commando geeft aan dat er een probleem is met de SSL-handshake. Het specifieke foutbericht is "error:1408F10B:SSL routines:ssl3_get_record:wrong version number". Dit kan duiden op een mismatch in de SSL-versies tussen de client (curl) en de server.
+
+__Trouble shooting:__
+Mogelijke oorzaken kunnen zijn dat de server SSL/TLS versie 1.3 gebruikt, terwijl de gebruikte versie van curl niet compatibel is met die versie. Een andere mogelijke oorzaak is dat er iets mis is met de SSL-configuratie op de server. 
+
+Opdracht 2: __Analyseer enkele certificeringspaden van bekende websites (bijv. techgrounds.nl / google.com / ing.nl).__
+![SS.2_Inloggen](../00_includes/03_Security/25.certificaatTechgrounds.png) 
+![SS.2_Inloggen](../00_includes/03_Security/26.ing.png) 
+
+Opdracht 3: __Vind de lijst van vertrouwde certificaatwortels op je pc/laptop (bonuspunten als je het ook in je VM kunt vinden).__  
+
+
+De vertrouwde lijst met certificaten op mijn macbook kan hier gevonden worden:
+
+![SS.2_Inloggen](../00_includes/03_Security/27.sleutelhanger.png) 
+
+De vertrouwde lijst met certificaten in mijn Linux kan met de volgende commando's gevonden worden:
+![SS.2_Inloggen](../00_includes/03_Security/28.certificaatLinux.png)  
