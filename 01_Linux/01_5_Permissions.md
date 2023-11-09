@@ -17,7 +17,7 @@ Een "long listing" (lange lijst) in de terminal verwijst naar een uitvoerformaat
     -rw-r--r-- 12 <user> <group>  <datum> <tijd> <filename>
   ```   
   Met de volgende afbeelding kan men achterhalen wat alles betekent in de long list.   
-  ![SS.2_Inloggen](../00_includes/10.longlistuitleg.png)       
+  ![SS.2_Inloggen](../00_includes/01_Linux/10.longlistuitleg.png)       
     
     De volgende manier laat zien hoe je rechten kunt verwijderen van groep en andere: 
 
@@ -47,6 +47,7 @@ Een bestand uitvoerbaar maken in de terminal betekent dat het bestand kan worden
 
 ## Opdracht  
 Maak een file en maak deze executabel. Maak van deze file een long list aan en bekijk de permissies. verwijder de rechten van de groep en overige betreft het lezen en schrijven. Verander de owner van de file en verander de groep owner. 
+
 ### Gebruikte bronnen
 * https://chat.openai.com  
 * https://manpages.ubuntu.com/manpages/jammy/man1/virt-ls.1.html  
@@ -54,18 +55,15 @@ Maak een file en maak deze executabel. Maak van deze file een long list aan en b
 * https://linuxconfig.org/understanding-of-ls-command-with-a-long-listing-format-output-with-permission-bits   
 * https://www.guru99.com/file-permissions.html 
 
-### Ervaren problemen
-Ik heb hier geen problemen ervaren.
-
 ### Resultaat
   
   In de volgende screenshot is te zien hoe ik een new file heb aangemaakt en hoe ik deze executabel heb gemaakt: 
-![SS.2_Inloggen](../00_includes/11.NewFile.LongList.Executable-X.png)     
+![SS.2_Inloggen](../00_includes/01_Linux/11.NewFile.LongList.Executable-X.png)     
 
 In de volgende screenshot is te zien hoe ik rechten afneem van de groep en overige:   
-![SS.2_Inloggen](../00_includes/12.Removed_the_readandwritepermissions.png)     
+![SS.2_Inloggen](../00_includes/01_Linux/12.Removed_the_readandwritepermissions.png)     
 
   In de volgende screenshot is te zien hoe ik de ownership van de groep aanpas en de owner:     
-  ![SS.2_Inloggen](../00_includes/13.changed_the_ownerand_group.png)  
+  ![SS.2_Inloggen](../00_includes/01_Linux/13.changed_the_ownerand_group.png)  
    
 

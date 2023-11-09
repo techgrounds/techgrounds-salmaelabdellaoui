@@ -54,11 +54,11 @@ Ik ondervond problemen bij het inloggen op mijn Linux VM, wat te wijten was aan 
   
   De screenshot hieronder geeft bij het gebruik van mijn PEM file aan dat het gaat om een unprotected private key. Door middel van de chmod 600 command heb ik de juiste toegangsrechten verleend. 
 
-![SS.1_Permissie](../00_includes/1.Permissies.png)   
+![SS.1_Permissie](../00_includes/01_Linux/1.Permissies.png)    
   
 In de volgende screenshot is te zien dat bij gebruik van mijn PEM (die nu de juiste toegangsrechten heeft), mijn protaal nummer en mijn username@IP adres, ik ben ingelogd in mijn VM.     
 
-![SS.2_Inloggen](../00_includes/2.inloggen.png) 
+![SS.2_Inloggen](../00_includes/01_Linux/2.inloggen.png) 
 
 
 

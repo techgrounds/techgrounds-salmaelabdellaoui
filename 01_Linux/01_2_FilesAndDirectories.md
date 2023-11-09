@@ -55,10 +55,8 @@ Orienteer in jouw VM, vindt je huidige werkmap, maak een lijst van alle bestande
 ### Gebruikte bronnen
 * https://chat.openai.com  
 
-### Ervaren problemen
-Ik heb hier geen problemen ervaren.
 
 ### Resultaat
-![SS.2_Inloggen](../00_includes/3.filesAndDirectories.png)  
+![SS.2_Inloggen](../00_includes/01_Linux/3.filesAndDirectories.png)  
 
 

@@ -64,12 +64,12 @@ Mijn service naam van telnet is niet de gebruikelijke 'telnetd'. Ik moest eracht
 
 ### Resultaat
 In de volgende screenshot is te zien hoe de telnet programma is geïnstalleerd, enabled, gestart en de status van het programma: 
-![SS.2_Inloggen](../00_includes/14.Telnetgeinstalleerd.en.PID.opgevraagd.png)    
+![SS.2_Inloggen](../00_includes/01_Linux/14.Telnetgeinstalleerd.en.PID.opgevraagd.png)    
   
   In de volgende screenshot is te zien hoe de status is opgevraagd en de geheugen die het in beslag neemt:   
-  ![SS.2_Inloggen](../00_includes/15.status.opnieuwopgevraagd.PIDenmemory.png)   
+  ![SS.2_Inloggen](../00_includes/01_Linux/15.status.opnieuwopgevraagd.PIDenmemory.png)   
     
 In de laatste screenshot is te zien hoe het programma gestopt wordt en de status ervan om het te bevestigen: 
-![SS.2_Inloggen](../00_includes/16.KILL.telnet.png) 
+![SS.2_Inloggen](../00_includes/01_Linux/16.KILL.telnet.png) 
 
   

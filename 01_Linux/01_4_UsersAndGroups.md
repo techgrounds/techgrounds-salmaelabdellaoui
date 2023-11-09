@@ -55,26 +55,24 @@ Je kunt bestanden lokaliseren binnen een terminal of opdrachtregelomgeving in Li
 
 ### Gebruikte bronnen
 * https://chat.openai.com  
-
-### Ervaren problemen
-Ik heb hier geen problemen ervaren. 
+ 
 
 ### Resultaat  
 Het aanmaken van een nieuwe user + wachtwoord en het toekennen van sudo rechten:   
 
-![SS.2_Inloggen](../00_includes/5.ingelogd_root_2usserstoegevoegd.png)    
+![SS.2_Inloggen](../00_includes/01_Linux/5.ingelogd_root_2usserstoegevoegd.png)    
 
 De nieuwe user voert sudo commando's uit:  
-![SS.2_Inloggen](../00_includes/6.testuservoertsudocommandouit.png)   
+![SS.2_Inloggen](../00_includes/01_Linux/6.testuservoertsudocommandouit.png)   
   
 Hierbij is de commando gebruikt die de gebruikers toont:
-![SS.2_Inloggen](../00_includes/7.group_namesandmembers.png)        
+![SS.2_Inloggen](../00_includes/01_Linux/7.group_namesandmembers.png)        
 
 Hierbij is de commando gebruikt om de wachtwoorden file naar boven te halen:   
-![SS.2_Inloggen](../00_includes/8.specifiek_newuser_opgezochtenpasswordslijstvan_alles.png)   
+![SS.2_Inloggen](../00_includes/01_Linux/8.specifiek_newuser_opgezochtenpasswordslijstvan_alles.png)   
     
 Hierbij is de commando gebruikt om de gebruikers file naar boven te halen:
-![SS.2_Inloggen](../00_includes/9.Users_account_information.png)    
+![SS.2_Inloggen](../00_includes/01_Linux/9.Users_account_information.png)    
 
   
 

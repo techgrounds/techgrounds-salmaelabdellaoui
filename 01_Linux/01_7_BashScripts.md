@@ -32,19 +32,16 @@ Maak een script dat een willekeurig getal genereert tussen 1 en 10, dit getal op
 ### Gebruikte bronnen
 * https://chat.openai.com   
 
-### Ervaren problemen
-Ik heb hier geen probelemen ervaren. 
-
 ### Resultaat
 __Opdracht 1__  
 
 In de volgende screenshot is te zien hoe de directory 'scripts' is gemaakt. Ook kan je in deze screenshot zien hoe ik een file verplaats in een directory.     
 
-![SS.2_Inloggen](../00_includes/17.make.directory.moveFileToDirectory.png)    
+![SS.2_Inloggen](../00_includes/01_Linux/17.make.directory.moveFileToDirectory.png)    
   
 In de volgende screenshot laat ik zien welke shell ik heb in mijn VM middels de commando echo $SHELL en maak ik een file aan met een bashscript extentie.   
   
-![SS.2_Inloggen](../00_includes/18.Add.scripts.PATHenappendslinetotextfile.png)   
+![SS.2_Inloggen](../00_includes/01_Linux/18.Add.scripts.PATHenappendslinetotextfile.png)   
   
 Om de directory genaamd scripts toe te voegen aan de PATH-variable heb ik de volgende stappen genomen (ook te zien in de screenshot hierboven):  
 
@@ -59,45 +56,45 @@ source ~/.bashrc
 ```  
 De volgende stap is het aanmaken van een file met een bash extentie en het dient de volgende script te bevatten:   
 
- ![SS.2_Inloggen](../00_includes/35.nantekst.png)   
+ ![SS.2_Inloggen](../00_includes/01_Linux/35.nantekst.png)   
    
   Vervolgens dien je de file executable te maken door middel van de chmod +x commando. Vervolgens kan je de inhoud van de bash script met behulp van de volgende commando:   
   ```
 ./<my_script.sh>
 ```   
 In de volgende screenshot is te zien hoe ik de httpd-paket installeer/ activeer en inschakelt.   
-![SS.2_Inloggen](../00_includes/19.Installhttpd,activate,enable.png)  
+![SS.2_Inloggen](../00_includes/01_Linux/19.Installhttpd,activate,enable.png)  
 
 In de text file die aangemaakt is en die install_httpd.sh heet, bevat de volgende script:   
-![SS.2_Inloggen](../00_includes/21.nanotextscriptinmyterminal.png)    
+![SS.2_Inloggen](../00_includes/01_Linux/21.nanotextscriptinmyterminal.png)    
   
 Om de status van de httpd pakket aan te tonen is in de volgende screenshot te zien welke commando is gebruikt en wat het resultaat daarvan is:  
-![SS.2_Inloggen](../00_includes/20.status.png)   
+![SS.2_Inloggen](../00_includes/01_Linux/20.status.png)   
   
 __Opdracht 2__  
 
 In de volgende screenshot is te zien hoe ik een file aanmaak met bash extentie, deze  maak ik executable en voer ik vervolgens uit:  
- ![SS.2_Inloggen](../00_includes/22.generatingrandomnumberandexecutingit.png)  
+ ![SS.2_Inloggen](../00_includes/01_Linux/22.generatingrandomnumberandexecutingit.png)  
    
   De textfile die ik hierboven heb aangemaakt bevat de volgende tekst: 
-![SS.2_Inloggen](../00_includes/23.MytextinNanoforthecommands.png)    
+![SS.2_Inloggen](../00_includes/01_Linux/23.MytextinNanoforthecommands.png)    
   
 
 __Opdracht 3__  
   
 In de voolgende screenshot is te zien welk commando's ik gebruik voor het maken van een nano script met bash extentie, die ik vervolgens executabel maak, waarna ik de script uitvoer.   
   
-![SS.2_Inloggen](../00_includes/24.Biggerthan5AssignmentExecution.png)    
+![SS.2_Inloggen](../00_includes/01_Linux/24.Biggerthan5AssignmentExecution.png)    
   
 In de volgende screenshot is te zien welke script ik heb gebruikt om dit te bewerkstelligen.  
   
-![SS.2_Inloggen](../00_includes/25.SH.script.png)   
+![SS.2_Inloggen](../00_includes/01_Linux/25.SH.script.png)   
 
 In de volgende screenshots is te zien wat de uitkomst is als het getal groter is dan 5 en als het getal kleiner is dan 5.   
   
-![SS.2_Inloggen](../00_includes/26.outputHogerDan5.png)  
+![SS.2_Inloggen](../00_includes/01_Linux/26.outputHogerDan5.png)  
   
-![SS.2_Inloggen](../00_includes/27.outputLagerDan5.png)  
+![SS.2_Inloggen](../00_includes/01_Linux/27.outputLagerDan5.png)  
   
 
 

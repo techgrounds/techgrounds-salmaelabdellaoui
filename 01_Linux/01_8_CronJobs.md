@@ -17,36 +17,34 @@ Maak een script dat beschikbare schijfruimte schrijft naar een logbestand in '/v
 ### Gebruikte bronnen
 * https://chat.openai.com   
 * https://crontab.guru 
-
-### Ervaren problemen
-Ik heb hier geen problemen ervaren. 
+ 
 
 ### Resultaat
 In de volgende screenshot is te zien hoe ik een file aanmaak genaamd 'timestamp' met een bash extentie, die ik ook executabel maak. Vervolgens registreer ik de script in de crontab file.     
 
-![SS.2_Inloggen](../00_includes/28.madescript.executable.crontab.png)  
+![SS.2_Inloggen](../00_includes/01_Linux/28.madescript.executable.crontab.png)  
   
 Ik heb de volgende script gebruikt om het bovenstaande uit te voeren: 
-![SS.2_Inloggen](../00_includes/30.textinscript.png)    
+![SS.2_Inloggen](../00_includes/01_Linux/30.textinscript.png)    
   
 In de volgende screenshot is te zien wat de output is:   
 
- ![SS.2_Inloggen](../00_includes/29.outputscript.png)    
+ ![SS.2_Inloggen](../00_includes/01_Linux/29.outputscript.png)    
 
  In de volgende screenshot is te zien hoe ik de script heb geregistreerd in crontab:  
    
-![SS.2_Inloggen](../00_includes/31.tectinCronTab.png)     
+![SS.2_Inloggen](../00_includes/01_Linux/31.tectinCronTab.png)     
 
 In de volgende screenshot is te zien hoe ik een file aanmaak genaamd 'disk space check' met een bash extentie, die ik ook executabel maak. Vervolgens registreer ik de script in de crontab file.   
   
-![SS.2_Inloggen](../00_includes/32.scriptDiskSpace.logfile.png)    
+![SS.2_Inloggen](../00_includes/01_Linux/32.scriptDiskSpace.logfile.png)    
 
 Ik heb de volgende script gebruikt om het bovenstaande uit te voeren:    
   
-![SS.2_Inloggen](../00_includes/35.nantekst.png)    
+![SS.2_Inloggen](../00_includes/01_Linux/35.nantekst.png)    
   
  In de volgende screenshot is te zien hoe ik de script heb geregistreerd in crontab:    
    
-![SS.2_Inloggen](../00_includes/34.crontab-e.png)  
+![SS.2_Inloggen](../00_includes/01_Linux/34.crontab-e.png)  
 
 Output is nog niet aanwezig omdat dit gaat om een wekelijkse check. 
