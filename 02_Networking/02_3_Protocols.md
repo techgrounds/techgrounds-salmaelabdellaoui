@@ -32,10 +32,10 @@ Geen problemen ervaren.
   
 Hieronder zijn alle OSI layers benoemd met hun bijbehorende servers:   
   
-  ![SS.2_Inloggen](../00_includes/02_AWS/9.OSI-servers.png)    
+  ![SS.2_Inloggen](../00_includes/02_Networking/9.OSI-servers.png)    
   
   De onderstaande screenshot geeft actieve TCP verbindingen weer op mijn computer. De onderliggende TCP-verbinding bevindt zich op OSI-laag 4 (transportlaag).
-![SS.2_Inloggen](../00_includes/02_AWS/7.Active.TCP.png)      
+![SS.2_Inloggen](../00_includes/02_Networking/7.Active.TCP.png)      
 
 1. Proto: in dit geval, TCP (Transmission Control Protocol).
 Recv-Q en Send-Q: In dit geval is de wachtrij voor zowel ontvangen als verzonden data leeg (0).
@@ -56,5 +56,5 @@ Het introduceren van een aangepast protocol vereist een diepgaand begrip van net
 6. Validatie: Valideer het protocol in realistische scenario's om ervoor te zorgen dat het aan de verwachtingen voldoet.   
   
 In de volgende screenshot is te zien hoe wireshark eruit ziet als ik mijn eigen netwerk data 'opneem':
-![SS.2_Inloggen](../00_includes/02_AWS/10.Wireshark.test.png)  
+![SS.2_Inloggen](../00_includes/02_Networking/10.Wireshark.test.png)  
 

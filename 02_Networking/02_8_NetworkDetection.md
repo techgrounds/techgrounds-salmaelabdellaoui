@@ -65,7 +65,7 @@ De output op mijn terminal geeft aan dat deze IP adres achter een firewall zit, 
 nmap -Pn 3.121.40.175
 ```   
 Dit was mijn uitslag:  
-![SS.2_Inloggen](../00_includes/02_AWS/16.LocalIPadres.nmap.png)   
+![SS.2_Inloggen](../00_includes/02_Networking/16.LocalIPadres.nmap.png)   
   
 Samenvattend, deze Nmap-scan toont aan dat het doeldoel op 3.121.40.175 reageert, met de SSH-service (poort 22) open, terwijl veel andere poorten gesloten of gefilterd zijn en de bijbehorende services niet konden worden bepaald. Gesloten poorten zijn doorgaans die poorten die niet actief luisteren naar inkomende verbindingen.  
   
@@ -75,7 +75,7 @@ ip a
 ```    
 Dit was mijn uitslag:  
 
-![SS.2_Inloggen](../00_includes/02_AWS/15.IPadresOpvragen.Nmap.uitvoeren.png)   
+![SS.2_Inloggen](../00_includes/02_Networking/15.IPadresOpvragen.Nmap.uitvoeren.png)   
   
 * Loopback Interface (lo):
 IP Address: 127.0.0.1 (IPv4) and ::1 (IPv6)  
@@ -104,7 +104,7 @@ Poort 80 (HTTP): Dit is de standaardpoort voor HTTP-webdiensten.
 Je kunt zien dat zowel de SSH- als HTTP-diensten actief zijn en toegankelijk zijn op je Linux-VM. De andere poorten zijn gesloten, wat betekent dat er geen actieve diensten op draaien.  
   
 Met Wireshark heb ik mijn netwerk gedetecteerd, hieronder een screenshot van wat ik heb verkregen: 
-![SS.2_Inloggen](../00_includes/02_AWS/17.NetwerkDetectieYoutube.png)   
+![SS.2_Inloggen](../00_includes/02_Networking/17.NetwerkDetectieYoutube.png)   
   
 In deze screenshot is te zien dat ik youtube heb gebruikt in mijn browser. De No. geeft de nummer weer van het pakket. Time geeft aan wanneer de pakket verstuurd is, source is vanwaar het pakket wordt gestuurd en hier is dan ook de IP te zien, vervolgens heb je destination, dit geeft aan waar het pakket naar gestuurd wordt en de bijbehorende IP adres. Bij protocol zie je welke protocol is gebruikt om het tot stand te brengen, de length geeft aan uit hoeveel het pakket bestaat en info geeft extra informatie over het pakket.   
   

@@ -8,7 +8,7 @@ Het OSI-model helpt fabrikanten van netwerkapparatuur en leveranciers van netwer
 * Te bepalen met welke delen van het netwerk hun producten moeten werken.
 * Aan gebruikers te communiceren op welke netwerklagen hun product werkt, bijvoorbeeld alleen op de toepassingslaag of over de hele stack.   
   
-  ![SS.2_Inloggen](../00_includes/02_AWS/4.NetworkingDevicesExplained.png)    
+  ![SS.2_Inloggen](../00_includes/02_Networking/4.NetworkingDevicesExplained.png)    
    
 Netwerkapparaten dienen de volgende algemene doelen:
 
@@ -45,7 +45,7 @@ Er zijn verschillende type netwerken, hieronder zullen er 8 worden opgenoemd:
 8. Modum: Een modem, wat een afkorting is voor "modulator-demodulator," is een essentieel netwerkapparaat dat wordt gebruikt om digitale gegevens om te zetten in analoge signalen voor verzending over analoge communicatielijnen en vice versa.   
   
   Naast dat mijn lijst aangeeft wie er allemaal gebruik maakt van de router, zie je ook de volgende elemneten erbij staan.   
-     ![SS.2_Inloggen](../00_includes/02_AWS/5.MijnRouter.png)  
+     ![SS.2_Inloggen](../00_includes/02_Networking/5.MijnRouter.png)  
        
 Mijn DHCP server is als volgt:  
-![SS.2_Inloggen](../00_includes/02_AWS/6.DHCPInstellingen.png)  
+![SS.2_Inloggen](../00_includes/02_Networking/6.DHCPInstellingen.png)  

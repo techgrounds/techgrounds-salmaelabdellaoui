@@ -28,11 +28,11 @@ Geen problemen ervaren bij deze opdracht.
 ### Resultaat
 De installatie van de webserver heeft al plaatsgevonden in de opracht van Bash scripts. Die kan je vinden in de volgende map: 01_7_BashScripts. Hieronder laat ik alleen maar zien dat het actief is. 
 
-![SS.2_Inloggen](../00_includes/02_AWS/18.webserver.png)  
+![SS.2_Inloggen](../00_includes/02_Networking/18.webserver.png)  
 
 Middels mijn publieke IPv4 adres en mijn webport kan ik de standaardpagina die middels de webserver is geïnstalleerd openen via mijn browser. Dit ziet er als volgt uit:  
   
-![SS.2_Inloggen](../00_includes/02_AWS/19.standaardpaginaWebserver.png)    
+![SS.2_Inloggen](../00_includes/02_Networking/19.standaardpaginaWebserver.png)    
 
 
 De gebruikte IPv4 is 3.121.40.175 en mijn webport is 58012. Dit heb ik als volgt in mijn browser geplaatst: 3.121.40.175:58012   
@@ -73,9 +73,9 @@ sudo ufw enable
 ```  
 In de volgende screenshot is te zien hoe ik de bovengenoemde commando's heb gebruikt en wat daaruit is voortgekomen:
 
-![SS.2_Inloggen](../00_includes/02_AWS/21.FirewallSetting.blokade.png)
-![SS.2_Inloggen](../00_includes/02_AWS/22.extra.setting.firewall.png)  
+![SS.2_Inloggen](../00_includes/02_Networking/21.FirewallSetting.blokade.png)
+![SS.2_Inloggen](../00_includes/02_Networking/22.extra.setting.firewall.png)  
   
 Nu ik de firewall heb geactiveerd kan ik er via mijn webverkeer niet meer in.
 
-![SS.2_Inloggen](../00_includes/02_AWS/20.DENYWebserver.png)
+![SS.2_Inloggen](../00_includes/02_Networking/20.DENYWebserver.png) 

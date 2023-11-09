@@ -33,7 +33,7 @@ Ik heb hier geen problemen ervaren.
 
 ### Resultaat
 
-![SS.2_Inloggen](../00_includes/02_AWS/14.networkingCasestudy.jpg)  
+![SS.2_Inloggen](../00_includes/02_Networking/14.networkingCasestudy.jpg)  
   
 __In de bovenstaande diagram is het volgende te zien:__
 
