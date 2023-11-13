@@ -31,6 +31,7 @@ __What Is the Difference Between Capital and Operating Expenditures?__
 * https://www.nops.io/blog/aws-s3-pricing/
 * https://aws.amazon.com/free/free-tier-faqs/ 
 * https://www.investopedia.com/ask/answers/112814/whats-difference-between-capital-expenditures-capex-and-operational-expenditures-opex.
+* https://www.youtube.com/watch?v=2XilJFirnWY
 
 ### Budget Alert
 From Techground, I have been given a budget of 50 euros for my cloud usage in AWS (for the upcoming period). I have set up a monthly budget alert for this purpose, with a budget of 15 euros for each month. 
