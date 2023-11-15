@@ -25,7 +25,7 @@ __What Is the Difference Between Capital and Operating Expenditures?__
 
 
 
-### Gebruikte bronnen
+### Sources
 * https://www.techmagic.co/blog/aws-pricing-model-overview/ 
 * https://aws.amazon.com/ec2/pricing/ 
 * https://www.nops.io/blog/aws-s3-pricing/

@@ -17,7 +17,7 @@ This is a guide to my AWS Cloud Practitioner certification. There are a lot of s
 
 Besides the different services, I can also expect questions on cloud concepts, like the Well-Architected Framework or the cloud pricing model, as well as questions on the different support categories.  
 
-### Gebruikte bronnen
+### Sources
 * https://d1.awsstatic.com/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Exam-Guide.pdf 
 
 

@@ -23,7 +23,7 @@ Focus on projects that differentiate your business, not the infrastructure. Clou
 Easily deploy your application in multiple regions around the world with just a few clicks. This means you can provide lower latency and a better experience for your customers at minimal cost.
 
 
-### Gebruikte bronnen
+### Sources
 * https://www.youtube.com/watch?v=7KEygnLtRyE 
 * https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html# 
 

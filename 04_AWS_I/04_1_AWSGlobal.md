@@ -26,7 +26,7 @@ I would choose Frankfurt because of the following reason:
 
    However, the final decision may also depend on other factors such as specific services offered in each region, pricing, and any compliance or regulatory requirements that might affect my choice. 
 
-### Gebruikte bronnen
+### Sources
 * https://www.w3schools.com/aws/aws_cloudessentials_awsavailabilityzones.php
 * https://aws.amazon.com/about-aws/global-infrastructure/ 
 * https://chat.openai.com  
