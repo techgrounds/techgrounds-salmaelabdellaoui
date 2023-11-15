@@ -40,4 +40,5 @@ In summary, while security groups are associated with EC2 instances and operate 
 ### Sources
 * https://chat.openai.com 
 * https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security.html
+* https://www.youtube.com/watch?v=ttc0b2NZTV0 
 
