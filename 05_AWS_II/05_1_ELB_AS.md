@@ -57,7 +57,7 @@ The next step is creating an auto scaling group with the following requirements:
 ![ELB](../00_includes/05_AWS_II/10.autoscaling_III.png)
 ![ELB](../00_includes/05_AWS_II/11.autoscaling_IV.png)
 
-I checeks that the EC2 instances are online and that they are part of the target group for the load balancer.
+I checked that the EC2 instances are online and that they are part of the target group for the load balancer.
 
 ![ELB](../00_includes/05_AWS_II/12.EC2OnlineCheck.png)
 ![ELB](../00_includes/05_AWS_II/13.TargetGroupHealthy.png)
