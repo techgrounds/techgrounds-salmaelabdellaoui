@@ -37,8 +37,41 @@ Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web 
 * https://cloud.contentraven.com/awspartners/w3schools/content-viewer/517004/1/11/0 
 * https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html 
 * https://www.youtube.com/watch?v=10JKpg-eqZU
-
+* https://www.w3schools.com/aws/aws_cloudessentials_amazonelasticfilesystem.php
+* https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html
 
 ### Practical experience with AWS services
+
+#### Elastic File System (EFS)
+
+Amazon Elastic File System (Amazon EFS) provides serverless, fully elastic file storage so that you can share file data without provisioning or managing storage capacity and performance. Amazon EFS is built to scale on demand to petabytes without disrupting applications, growing and shrinking automatically as you add and remove files. 
+
+Amazon EFS offers the following storage class options for different use cases:
+
+* __Standard storage classes:__   
+(Recommended) – EFS Standard and EFS Standard–Infrequent Access (Standard–IA), which offer Multi-AZ resilience and the highest levels of durability and availability.
+* __One Zone storage classes:__   
+ – EFS One Zone and EFS One Zone–Infrequent Access (EFS One Zone–IA), which offer you the choice of additional savings by choosing to save your data in a single Availability Zone  
+
+ ##### Exercise 
+
+ 1. Create an EFS file system using Amazon EFS Quick Create when making an EC2
+
+ ![EFS](../00_includes/05_AWS_II/21.EC2created.png)
+![EFS](../00_includes/05_AWS_II/22.EFS-storage.png)
+![EFS](../00_includes/05_AWS_II/23.EFS-Storage-settings.png)
+![EFS](../00_includes/05_AWS_II/24.Bashscript.png)
+![EFS](../00_includes/05_AWS_II/25.NetworkSettings.png)
+![EFS](../00_includes/05_AWS_II/26.Securitygroup.png)
+
+ 2. Test the EFS file system
+
+![EFS](../00_includes/05_AWS_II/27.TestEFS.png)
+![EFS](../00_includes/05_AWS_II/28.TesteEFS-file.png)
+
+3. Delete the EFS file system
+![EFS](../00_includes/05_AWS_II/29.DeleteFileSystem.png) 
+
+
 
 
