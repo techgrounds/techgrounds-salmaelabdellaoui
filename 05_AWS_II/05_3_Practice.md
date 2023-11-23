@@ -44,10 +44,12 @@ Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web 
 * https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.html 
 * https://www.youtube.com/watch?v=tLp8pPNdDXQ 
 * https://www.youtube.com/watch?v=ZCt3ctVfGIk 
+* https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.environments.html
+* https://www.youtube.com/watch?v=cfO5mfI_EdM
 
 ### Practical experience with AWS services
 
-#### Elastic File System (EFS)
+### Elastic File System (EFS)
 
 Amazon Elastic File System (Amazon EFS) provides serverless, fully elastic file storage so that you can share file data without provisioning or managing storage capacity and performance. Amazon EFS is built to scale on demand to petabytes without disrupting applications, growing and shrinking automatically as you add and remove files. 
 
@@ -78,7 +80,7 @@ Amazon EFS offers the following storage class options for different use cases:
 ![EFS](../00_includes/05_AWS_II/29.DeleteFileSystem.png) 
 
 
-#### RDS and Aurora 
+### RDS and Aurora 
 AWS RDS is also called AWS Relational Database Service. RDS is a service that automates database tasks. It enables running relational databases in AWS Cloud.
 
 Amazon RDS is responsible for hosting the software components and infrastructure of DB instances and DB cluster. You are responsible for query tuning, which is the process of adjusting SQL queries to improve performance.
@@ -93,7 +95,7 @@ Amazon Aurora creates six copies of data across three Availability Zones and a d
 
 Instead of provisioning and managing database servers, I specify Aurora capacity units (ACUs). Here, load is CPU utilization and the number of connections. When capacity is constrained by either of these, Aurora Serverless v1 scales up. 
 
-Furthermore, I specified the capacity range, the serverless Aurora, and I enealed the API which allows me to interact with my database. The VPC that is used, is the default one with the three subnets. 
+Furthermore, I specified the capacity range, the serverless Aurora, and I enabled the API which allows me to interact with my database. The VPC that is used, is the default one with the three subnets. 
 
 ![Aurora](../00_includes/05_AWS_II/30.AuroraSettings.png) 
 ![Aurora](../00_includes/05_AWS_II/31.EngineAurora.png) 
@@ -101,4 +103,41 @@ Furthermore, I specified the capacity range, the serverless Aurora, and I eneale
 ![Aurora](../00_includes/05_AWS_II/33.InstanceConfig.png) 
 ![Aurora](../00_includes/05_AWS_II/34.APIEnabeld.png) 
 ![Aurora](../00_includes/05_AWS_II/35.AuroraDatabaseMade.png) 
+
+### AWS Elastic Beanstalk
+
+With AWS Elastic Beanstalk, you can quickly deploy and manage applications in the AWS Cloud without worrying about the infrastructure that runs those applications. AWS Elastic Beanstalk reduces management complexity without restricting choice or control. You simply upload your application, and AWS Elastic Beanstalk automatically handles the details of capacity provisioning, load balancing, scaling, and application health monitoring.
+
+Elastic Beanstalk supports applications developed in Go, Java, .NET, Node.js, PHP, Python, and Ruby. When you deploy your application, Elastic Beanstalk builds the selected supported platform version and provisions one or more AWS resources, such as Amazon EC2 instances, to run your application.
+
+#### Exercise 
+
+1. Create an example application   
+
+![Beanstalk](../00_includes/05_AWS_II/36.ConfigBean.png)
+
+    * Create IAM Role for EC2 instance profile  
+
+![Beanstalk](../00_includes/05_AWS_II/41.IAMCreated.png)    
+
+ * Continue   
+
+![Beanstalk](../00_includes/05_AWS_II/37.ServiceAcces.png)
+![Beanstalk](../00_includes/05_AWS_II/38.NetworkBean.png)
+![Beanstalk](../00_includes/05_AWS_II/39.ConfigInstance.png)
+![Beanstalk](../00_includes/05_AWS_II/40.congratulations.png)
+
+So what has been created for this example application?
+
+1. An Amazon Elastic Compute Cloud (Amazon EC2) instance (virtual machine)
+![Beanstalk](../00_includes/05_AWS_II/42.EC2created.png)
+2. An Amazon EC2 security group
+![Beanstalk](../00_includes/05_AWS_II/43.EC2securitygroup.png)
+3. An Amazon Simple Storage Service (Amazon S3) bucket 
+![Beanstalk](../00_includes/05_AWS_II/44.S3Bucket.png)
+4. Amazon CloudWatch alarms
+![Beanstalk](../00_includes/05_AWS_II/45.Cloudwatch.png)
+5. An AWS CloudFormation stack
+![Beanstalk](../00_includes/05_AWS_II/46.Cloudformationstack.png)
+6. A domain name
 
