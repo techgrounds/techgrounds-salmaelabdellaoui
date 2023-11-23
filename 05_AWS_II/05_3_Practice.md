@@ -39,6 +39,11 @@ Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web 
 * https://www.youtube.com/watch?v=10JKpg-eqZU
 * https://www.w3schools.com/aws/aws_cloudessentials_amazonelasticfilesystem.php
 * https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html
+* https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEFS.html 
+* https://www.w3schools.com/aws/aws_cloudessentials_amazonrds.php 
+* https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.html 
+* https://www.youtube.com/watch?v=tLp8pPNdDXQ 
+* https://www.youtube.com/watch?v=ZCt3ctVfGIk 
 
 ### Practical experience with AWS services
 
@@ -73,5 +78,27 @@ Amazon EFS offers the following storage class options for different use cases:
 ![EFS](../00_includes/05_AWS_II/29.DeleteFileSystem.png) 
 
 
+#### RDS and Aurora 
+AWS RDS is also called AWS Relational Database Service. RDS is a service that automates database tasks. It enables running relational databases in AWS Cloud.
 
+Amazon RDS is responsible for hosting the software components and infrastructure of DB instances and DB cluster. You are responsible for query tuning, which is the process of adjusting SQL queries to improve performance.
+
+Amazon Aurora is a relational database ideal for large organizations and enterprises. It offers high availability of data. It is excellent for managing large amounts of data. It is five times faster than a MySQL database. It is three times faster than a PostgreSQL database. 
+
+Amazon Aurora creates six copies of data across three Availability Zones and a data backup on Amazon S3. It ensures the data is available at all times. 
+
+##### Excercise
+
+1. Configure your own RDS Aurora Serverless MySQL instance in the AWS console.   
+
+Instead of provisioning and managing database servers, I specify Aurora capacity units (ACUs). Here, load is CPU utilization and the number of connections. When capacity is constrained by either of these, Aurora Serverless v1 scales up. 
+
+Furthermore, I specified the capacity range, the serverless Aurora, and I enealed the API which allows me to interact with my database. The VPC that is used, is the default one with the three subnets. 
+
+![Aurora](../00_includes/05_AWS_II/30.AuroraSettings.png) 
+![Aurora](../00_includes/05_AWS_II/31.EngineAurora.png) 
+![Aurora](../00_includes/05_AWS_II/32.AuroraIAM.png) 
+![Aurora](../00_includes/05_AWS_II/33.InstanceConfig.png) 
+![Aurora](../00_includes/05_AWS_II/34.APIEnabeld.png) 
+![Aurora](../00_includes/05_AWS_II/35.AuroraDatabaseMade.png) 
 
