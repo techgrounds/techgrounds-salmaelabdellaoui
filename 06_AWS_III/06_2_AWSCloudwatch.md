@@ -37,6 +37,7 @@ There are more terms within Cloudwatch, everything can be found in the link prov
 ### Sources
 * https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_architecture.html 
 * https://www.udemy.com/course 
+* https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/set-alarm-state.html 
 
 ### Results
 1. Create an alarm that will terminate the EC2 instance using Cloudwatch.
