@@ -27,5 +27,23 @@ __DynamoDB can work with the following servers:__
 * https://www.youtube.com/watch?v=2mVR_Qgx_RU 
 
 
-### Results
-[Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
+### Practical Exercise 
+1. Use DynamoDB and create a table
+
+![DynamoDB](../00_includes/06_AWS_III/17.CreateTableDB.png)
+![DynamoDB](../00_includes/06_AWS_III/18.ReadWriteSettings.png)
+![DynamoDB](../00_includes/06_AWS_III/19.CostandEncryption.png)
+![DynamoDB](../00_includes/06_AWS_III/20.TableCreated.png) 
+
+2. Add items to the table
+
+![DynamoDB](../00_includes/06_AWS_III/21.ItemsCreatedinTable.png) 
+
+3. Set an alarm via Cloudwatch to monitor your table in DynamoDB
+
+![DynamoDB](../00_includes/06_AWS_III/22.AlarmCreatedForDBinCloud.png) 
+![DynamoDB](../00_includes/06_AWS_III/23.AlarmAttachedToDB.png)   
+  
+Alarm was set in the Alarm state
+![DynamoDB](../00_includes/06_AWS_III/24.AlaramsInState.png) 
+
