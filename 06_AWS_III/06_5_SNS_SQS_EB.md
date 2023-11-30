@@ -44,6 +44,7 @@ Pipes and event buses are often used together. A common use case is to create a 
 * https://docs.aws.amazon.com/sns/latest/dg/welcome.html 
 * https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html 
 * https://www.udemy.com/course 
+* https://www.youtube.com/watch?v=xyHLX1dUwuA 
 
 ### Practical Exercise
 1. Create an Amazone SNS topic 
@@ -69,4 +70,29 @@ Pipes and event buses are often used together. A common use case is to create a 
 5. Confirm succes  
 
 ![SNS](../00_includes/06_AWS_III/46.EmailConfirmation.png)
+
+## SQS and Lamda
+
+1. Create Lambda function 
+
+![SNS](../00_includes/06_AWS_III/50.CreatedBasicLAmda.png)
+
+2. Create SQS queue
+
+![SNS](../00_includes/06_AWS_III/47.CreatedQueue.png)
+![SNS](../00_includes/06_AWS_III/48.CreatedQueueII.png)
+![SNS](../00_includes/06_AWS_III/49.CreatedQueueIII.png)
+
+3. Add trigger to Lambda and connect with your SQS
+
+![SNS](../00_includes/06_AWS_III/51.AddedSQSTrigger.png)
+![SNS](../00_includes/06_AWS_III/52.AddedTrigger.png)  
+
+4. Send Messages via SQS to Lambda
+
+![SNS](../00_includes/06_AWS_III/53.SendMessagesviaSQS.png)
+
+Message was recieved in the logs of cloudwatch
+![SNS](../00_includes/06_AWS_III/54.MessagesRecievedInLogOFLAmda.png) 
+![SNS](../00_includes/06_AWS_III/55.InfoOfLogg.png)
 
