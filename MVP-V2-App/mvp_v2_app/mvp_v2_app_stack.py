@@ -91,6 +91,8 @@ class MvpV2AppStack(Stack):
 
         # Define Network ACLs for the webserver as for the adminserver
         # Create Network ACL for the webserver public and private:
+        
+
         self.nacl_web_public = ec2.NetworkAcl(self, 'nacl-web-public', 
             network_acl_name='nacl-web-public',
             vpc=self.vpc_webserver,
@@ -111,6 +113,47 @@ class MvpV2AppStack(Stack):
             )
 
         # NACLs for private subnet of webserver:
+        # Inbound and Outbound ruls in vpc_web_public 
+        # Allow all inbound HTTP traffic on the load balancer listener port
+        self.nacl_web_public.add_entry("Inbound-HTTP",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=100,
+            traffic=ec2.AclTraffic.tcp_port(80),        # HTTP port
+            direction=ec2.TrafficDirection.INGRESS
+            )
+
+        # Allow all inbound HTTPS traffic on the load balancer listener port
+        self.nacl_web_public.add_entry("Inbound-HTTPS",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=110,
+            traffic=ec2.AclTraffic.tcp_port(443),       # HTTPS port
+            direction=ec2.TrafficDirection.INGRESS
+            )
+        
+        # Allow inbound traffic from the VPC CIDR on the ephemeral ports
+        self.nacl_web_public.add_entry("Inbound-Ephemeral",
+            cidr=ec2.AclCidr.ipv4("10.0.1.0/24"),
+            rule_number=120,
+            traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),    # ephemeral ports
+            direction=ec2.TrafficDirection.INGRESS
+            )
+        
+        # Allow all outbound traffic on the instance-listener/health-check port
+        self.nacl_web_public.add_entry("Outbound-HTTPS/health-check",
+            cidr=ec2.AclCidr.ipv4("10.0.1.0/24"),
+            rule_number=110,
+            traffic=ec2.AclTraffic.tcp_port(443),       # HTTPS/health-check port
+            direction=ec2.TrafficDirection.EGRESS
+            )
+        
+        # Allow all outbound traffic on the ephemeral ports
+        self.nacl_web_public.add_entry("Outbound-Ephemeral",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=120,
+            traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),    # ephemeral ports
+            direction=ec2.TrafficDirection.EGRESS
+            )
+        
         # Inbound and outbound rules in vpc_web_private for ephemeral ports
         self.nacl_web_private.add_entry("Inbound-Ephemeral",
             cidr=ec2.AclCidr.any_ipv4(),
@@ -427,6 +470,12 @@ class MvpV2AppStack(Stack):
             backup_selection_name="webserver-backup",
             resources=[
                 backup.BackupResource.from_ec2_instance(self.instance_webserver)
+                ]
+            )
+        self.backupplan.add_selection("add-adminserver", 
+            backup_selection_name="adminserver-backup",
+            resources=[
+                backup.BackupResource.from_ec2_instance(self.instance_adminserver)
                 ]
             )
         
