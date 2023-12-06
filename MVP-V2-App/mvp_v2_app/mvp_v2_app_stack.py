@@ -17,6 +17,19 @@ from aws_cdk import (
     CfnOutput,
 )
 import aws_cdk.aws_s3 as s3
+ """
+ Creates two VPCs, one for the web server and one for the admin server.
+ 
+ Peers the two VPCs together so they can communicate.
+ 
+ Gets the route tables and subnets to add routes between the peered VPCs.
+ 
+ Adds a route from the web server VPC to the admin server VPC CIDR range.
+ 
+ Adds a route from the admin server VPC to the web server VPC CIDR range.
+ 
+ This allows instances in each VPC to communicate with each other.
+ """
  
 class MvpV2AppStack(Stack):
 
@@ -55,7 +68,7 @@ class MvpV2AppStack(Stack):
         ) 
 
         # Get the route tables and subnets for the VPC peering connection from webserver to adminserver
-        self.subnet_webserver = self.vpc_webserver.public_subnets[0]
+        self.subnet_webserver = self.vpc_webserver.private_subnets[0]
         self.rt_sub_webserv = self.subnet_webserver.route_table
 
         #Add route from webserver to adminserver 
@@ -83,7 +96,7 @@ class MvpV2AppStack(Stack):
             vpc=self.vpc_webserver,
             subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
             )
-        
+
         self.nacl_web_private = ec2.NetworkAcl(self, 'nacl-web-private', 
             network_acl_name='nacl-web-private',
             vpc=self.vpc_webserver,
@@ -299,175 +312,175 @@ class MvpV2AppStack(Stack):
             )
         
 
-        # # Webserver Autoscaling
-        # webserver_instance = autoscaling.AutoScalingGroup(
-        #     self,"Webserver-instance",
-        #     vpc=self.vpc_webserver,
-        #     vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED),  
-        #     security_group=sg_webserver,
-        #     role=webserver_role,
-        #     instance_type = ec2.InstanceType.of(
-        #         ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  
-        #     machine_image=ec2.AmazonLinuxImage(
-        #         generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
-        #     user_data=ec2.UserData.custom(self.user_data),
-        #     key_name=keypair_adminIT.key_pair_name,
-        #     block_devices=[ec2.BlockDevice(
-        #         device_name="/dev/xvda",                       
-        #         volume=ec2.BlockDeviceVolume.ebs(
-        #             volume_size=15,                              
-        #             encrypted=True,                            
-        #             )
-        #         )],
-        #     desired_capacity=1,
-        #     min_capacity=1,
-        #     max_capacity=3,
-        #     health_check=autoscaling.HealthCheck.elb(grace=Duration.minutes(5)),
-        #  )
+        # Webserver Autoscaling
+        webserver_instance = autoscaling.AutoScalingGroup(
+            self,"Webserver-instance",
+            vpc=self.vpc_webserver,
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED),  
+            security_group=sg_webserver,
+            role=webserver_role,
+            instance_type = ec2.InstanceType.of(
+                ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  
+            machine_image=ec2.AmazonLinuxImage(
+                generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
+            user_data=ec2.UserData.custom(self.user_data),
+            key_name=keypair_adminIT.key_pair_name,
+            block_devices=[ec2.BlockDevice(
+                device_name="/dev/xvda",                       
+                volume=ec2.BlockDeviceVolume.ebs(
+                    volume_size=15,                              
+                    encrypted=True,                            
+                    )
+                )],
+            desired_capacity=1,
+            min_capacity=1,
+            max_capacity=3,
+            health_check=autoscaling.HealthCheck.elb(grace=Duration.minutes(5)),
+         )
         
 
-        # # Create a custom metric for CPU utilization
-        # cpu_metric = cloudwatch.Metric(
-        #     namespace="AWS/EC2",
-        #     metric_name="CPUUtilization",
-        #     dimensions_map={"AutoScalingGroupName": webserver_instance.auto_scaling_group_name},
-        #     statistic="Average",
-        # )
+        # Create a custom metric for CPU utilization
+        cpu_metric = cloudwatch.Metric(
+            namespace="AWS/EC2",
+            metric_name="CPUUtilization",
+            dimensions_map={"AutoScalingGroupName": webserver_instance.auto_scaling_group_name},
+            statistic="Average",
+        )
 
-        # # Create a step scaling policy
-        # step_scaling_policy = autoscaling.StepScalingPolicy(
-        #     self,
-        #     "Step-Scaling-Policy",
-        #     auto_scaling_group=webserver_instance,
-        #     metric=cpu_metric,
-        #     adjustment_type=autoscaling.AdjustmentType.CHANGE_IN_CAPACITY,
-        #     scaling_steps=[
-        #         autoscaling.ScalingInterval(lower=0, upper=40, change=-1),
-        #         autoscaling.ScalingInterval(lower=70, change=1),
-        #     ],
-        # )
+        # Create a step scaling policy
+        step_scaling_policy = autoscaling.StepScalingPolicy(
+            self,
+            "Step-Scaling-Policy",
+            auto_scaling_group=webserver_instance,
+            metric=cpu_metric,
+            adjustment_type=autoscaling.AdjustmentType.CHANGE_IN_CAPACITY,
+            scaling_steps=[
+                autoscaling.ScalingInterval(lower=0, upper=40, change=-1),
+                autoscaling.ScalingInterval(lower=70, change=1),
+            ],
+        )
 
-        # # Certificate ARN 
-        # certificate_arn_alb="arn:aws:acm:eu-central-1:052055660545:certificate/fa9f2ae1-9196-4a4d-9293-5c4c45246248"
+        # Certificate ARN 
+        certificate_arn_alb="arn:aws:acm:eu-central-1:052055660545:certificate/fa9f2ae1-9196-4a4d-9293-5c4c45246248"
 
-        # # Create loadbalancer for the webserver
-        # loadbalancer_webserver = elbv2.ApplicationLoadBalancer(self, "LB-Webserver",
-        #                                             vpc=self.vpc_webserver,
-        #                                             internet_facing=True,
-        #                                             load_balancer_name="LB-Webserver",
-        #                                             )
+        # Create loadbalancer for the webserver
+        loadbalancer_webserver = elbv2.ApplicationLoadBalancer(self, "LB-Webserver",
+                                                    vpc=self.vpc_webserver,
+                                                    internet_facing=True,
+                                                    load_balancer_name="LB-Webserver",
+                                                    )
         
-        # # Output the Public IP (DNS Name) of the load balancer:
-        # CfnOutput(self, "WebServer_Public_IP", value=loadbalancer_webserver.load_balancer_dns_name)
+        # Output the Public IP (DNS Name) of the load balancer:
+        CfnOutput(self, "WebServer_Public_IP", value=loadbalancer_webserver.load_balancer_dns_name)
         
-        # # Create target group for the loadbalancer
-        # targetgroup_webserver = elbv2.ApplicationTargetGroup(self, "TG-Webserver",
-        #     vpc=self.vpc_webserver,
-        #     port=443,
-        #     targets=[webserver_instance],
-        #    )
+        # Create target group for the loadbalancer
+        targetgroup_webserver = elbv2.ApplicationTargetGroup(self, "TG-Webserver",
+            vpc=self.vpc_webserver,
+            port=443,
+            targets=[webserver_instance],
+           )
 
-        # # Import self signed certificate from console
-        # self.certificate_signed = cm.Certificate.from_certificate_arn(self, "certificate-signed",
-        #     certificate_arn=certificate_arn_alb
-        #     )
+        # Import self signed certificate from console
+        self.certificate_signed = cm.Certificate.from_certificate_arn(self, "certificate-signed",
+            certificate_arn=certificate_arn_alb
+            )
 
-        # # Add listener for port 443
-        # https_listener = loadbalancer_webserver.add_listener("HTTPS",
-        #     port=443,
-        #     ssl_policy=elbv2.SslPolicy.TLS12,
-        #     certificates=[self.certificate_signed],
-        #     default_target_groups=[targetgroup_webserver]
-        #     )
+        # Add listener for port 443
+        https_listener = loadbalancer_webserver.add_listener("HTTPS",
+            port=443,
+            ssl_policy=elbv2.SslPolicy.TLS12,
+            certificates=[self.certificate_signed],
+            default_target_groups=[targetgroup_webserver]
+            )
 
-        # # Add listener to the ALB for port 80 and redirect traffic to port 443
-        # http_listener = loadbalancer_webserver.add_listener("HTTP",
-        #     port=80,
-        #     default_action=elbv2.ListenerAction.redirect(
-        #         port="443",
-        #         protocol="HTTPS",
-        #         )
-        #     )
+        # Add listener to the ALB for port 80 and redirect traffic to port 443
+        http_listener = loadbalancer_webserver.add_listener("HTTP",
+            port=80,
+            default_action=elbv2.ListenerAction.redirect(
+                port="443",
+                protocol="HTTPS",
+                )
+            )
         
-        # # Create backup vault
-        # backup_vault = backup.BackupVault(self, "BackupVault",
-        # backup_vault_name="WebServerBackupVault",
-        # removal_policy=RemovalPolicy.DESTROY
-        # )
+        # Create backup vault
+        backup_vault = backup.BackupVault(self, "BackupVault",
+        backup_vault_name="WebServerBackupVault",
+        removal_policy=RemovalPolicy.DESTROY
+        )
 
-        # # Create backup plan for the webserver 
-        # self.backupplan = backup.BackupPlan(self, "backupplan",
-        #     backup_plan_name="7day-Backupplan",
-        #     backup_vault=backup_vault,
-        #     backup_plan_rules=[backup.BackupPlanRule(
-        #         rule_name="7days",
-        #         start_window=Duration.hours(1),             
-        #         completion_window=Duration.hours(2),        
-        #         delete_after=Duration.days(7),              
-        #         schedule_expression=events.Schedule.cron(
-        #             hour="0",       #UTC
-        #             minute="0", )   
-        #         )]
-        #     )
-        # # Select webserver for backup plan
-        # self.backupplan.add_selection("add-webserver", 
-        #     backup_selection_name="webserver-backup",
-        #     resources=[
-        #         backup.BackupResource.from_ec2_instance(self.instance_webserver)
-        #         ]
-        #     )
+        # Create backup plan for the webserver 
+        self.backupplan = backup.BackupPlan(self, "backupplan",
+            backup_plan_name="7day-Backupplan",
+            backup_vault=backup_vault,
+            backup_plan_rules=[backup.BackupPlanRule(
+                rule_name="7days",
+                start_window=Duration.hours(1),             
+                completion_window=Duration.hours(2),        
+                delete_after=Duration.days(7),              
+                schedule_expression=events.Schedule.cron(
+                    hour="0",       #UTC
+                    minute="0", )   
+                )]
+            )
+        # Select webserver for backup plan
+        self.backupplan.add_selection("add-webserver", 
+            backup_selection_name="webserver-backup",
+            resources=[
+                backup.BackupResource.from_ec2_instance(self.instance_webserver)
+                ]
+            )
         
         
-        # # S3 bucket voor database backups
-        # backup_bucket = s3.Bucket(self, "BackupBucket",
-        # encryption=s3.BucketEncryption.S3_MANAGED,
-        #                         removal_policy=RemovalPolicy.DESTROY, )
+        # S3 bucket voor database backups
+        backup_bucket = s3.Bucket(self, "BackupBucket",
+        encryption=s3.BucketEncryption.S3_MANAGED,
+                                removal_policy=RemovalPolicy.DESTROY, )
 
 
-        # # Verbind de KMS key aan de backup bucket
-        # DB_role = iam.Role(self, "role-DB",
-        #     assumed_by=iam.ServicePrincipal("ec2.amazonaws.com")
-        # )
-        # DB_role.add_to_policy(iam.PolicyStatement(
-        #     actions=["s3:GetObject", "s3:PutObject"],
-        #     resources=[backup_bucket.arn_for_objects("*")]
-        # ))
+        # Verbind de KMS key aan de backup bucket
+        DB_role = iam.Role(self, "role-DB",
+            assumed_by=iam.ServicePrincipal("ec2.amazonaws.com")
+        )
+        DB_role.add_to_policy(iam.PolicyStatement(
+            actions=["s3:GetObject", "s3:PutObject"],
+            resources=[backup_bucket.arn_for_objects("*")]
+        ))
 
-        # # Create Security Group for database
-        # self.securitygroup_DB = ec2.SecurityGroup(self, "securitygroup_DB",
-        #     vpc=self.vpc_webserver,
-        #     description="securitygroup_DB"
-        #     )
+        # Create Security Group for database
+        self.securitygroup_DB = ec2.SecurityGroup(self, "securitygroup_DB",
+            vpc=self.vpc_webserver,
+            description="securitygroup_DB"
+            )
         
-        # # Allow trafic from webserver to database
-        # self.securitygroup_DB.add_ingress_rule(
-        # ec2.Peer.ipv4("10.10.10.0/24"),
-        # ec2.Port.tcp(3306)  
-        # )
+        # Allow trafic from webserver to database
+        self.securitygroup_DB.add_ingress_rule(
+        ec2.Peer.ipv4("10.10.10.0/24"),
+        ec2.Port.tcp(3306)  
+        )
 
-        # # Sta verkeer toe van database naar S3  
-        # self.securitygroup_DB.add_egress_rule(
-        # ec2.Peer.ipv4("3.5.140.0/21"),
-        # ec2.Port.tcp(443)
-        # )
+        # Sta verkeer toe van database naar S3  
+        self.securitygroup_DB.add_egress_rule(
+        ec2.Peer.ipv4("3.5.140.0/21"),
+        ec2.Port.tcp(443)
+        )
 
-        # # MySQL RDS instance
-        # mysql_db_webserver = rds.DatabaseInstance(
-        # self, "MySQLDB",
-        # vpc=self.vpc_webserver, 
-        # vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
-        # engine=rds.DatabaseInstanceEngine.MYSQL,
-        # instance_type=ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.MICRO),
-        # allocated_storage=20, 
-        # iops=300,
-        # storage_encrypted=True,
-        # multi_az=True,
-        # publicly_accessible=False,
-        # database_name="mydb-webserver",
-        # deletion_protection=False,
-        # backup_retention=Duration.days(30),
-        # removal_policy=RemovalPolicy.DESTROY, 
-        # )
+        # MySQL RDS instance
+        mysql_db_webserver = rds.DatabaseInstance(
+        self, "MySQLDB",
+        vpc=self.vpc_webserver, 
+        vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
+        engine=rds.DatabaseInstanceEngine.MYSQL,
+        instance_type=ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.MICRO),
+        allocated_storage=20, 
+        iops=300,
+        storage_encrypted=True,
+        multi_az=True,
+        publicly_accessible=False,
+        database_name="mydb-webserver",
+        deletion_protection=False,
+        backup_retention=Duration.days(30),
+        removal_policy=RemovalPolicy.DESTROY, 
+        )
 
 
   
