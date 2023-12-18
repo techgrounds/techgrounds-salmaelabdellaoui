@@ -17,4 +17,4 @@ In a nutshell, AWS CloudTrail is your trustworthy assistant that keeps a detaile
 
 ### Sources
 * https://aws.amazon.com/cloudtrail/faqs/ 
-* https://chat.openai.com 
+* https://chat.openai.com  
