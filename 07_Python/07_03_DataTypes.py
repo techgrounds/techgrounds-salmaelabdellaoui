@@ -29,7 +29,7 @@ data_type_of_input = type((user_input))
 
 # Print the user input and its data type
 print("User input:", user_input)
-print("Data type of input:", user_input)
+print("Data type of input:", data_type_of_input)
 
 
 
