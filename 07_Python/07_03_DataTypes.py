@@ -18,3 +18,18 @@ x = b + float (d)
 
 # Print the value of x, which should now be a float
 print("Value of x:", x) 
+
+# Excercise 2 
+
+# Use input() to get input from the user and store it in a variable
+user_input = input("salmaelabdellaoui")
+
+# Find out the data type of the user input
+data_type_of_input = type((user_input))
+
+# Print the user input and its data type
+print("User input:", user_input)
+print("Data type of input:", user_input)
+
+
+
