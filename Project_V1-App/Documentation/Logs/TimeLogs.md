@@ -83,7 +83,7 @@ __Tasks completed__
 
 __Daily report__ 
 
-Working on the structure of my github and making it ready for the building phase. Finishing of my exploration user stories and start designing the infrastructure of the application. 
+Working on the structure of my github and making it ready for the building phase. Finishing of my exploration user stories.
 
 __Tasks completed__
 
