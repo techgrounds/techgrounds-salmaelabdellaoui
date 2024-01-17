@@ -11,6 +11,7 @@ Let's make each day a step closer to success!
   - [January 11, 2024](#january-11-2024)
   - [January 15, 2024](#january-15-2024)
   - [January 16, 2024](#january-16-2024)
+  - [January 17, 2024](#january-17-2024)
 
 
 ## January 08, 2024
@@ -90,3 +91,9 @@ __Tasks completed__
 - Structured my Github folders 
 - Updated my logs 
 - Updated my documentations 
+
+## January 17, 2024
+
+__Daily report__
+
+Finalizing all exploration epics in github. Completing the design for the infrastructure and start coding in CDK. 
