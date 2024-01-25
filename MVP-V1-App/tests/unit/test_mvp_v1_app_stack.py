@@ -1,11 +1,11 @@
 import aws_cdk as core
 import aws_cdk.assertions as assertions
-from project_v1_app.project_v1_app_stack import ProjectV1AppStack
+from mvp_v1_app.mvp_v1_app_stack import MvpV1AppStack
 
 
 def test_sqs_queue_created():
     app = core.App()
-    stack = ProjectV1AppStack(app, "project-v1-app")
+    stack = MvpV1AppStack(app, "mvp-v1-app")
     template = assertions.Template.from_stack(stack)
 
     template.has_resource_properties("AWS::SQS::Queue", {
@@ -15,7 +15,7 @@ def test_sqs_queue_created():
 
 def test_sns_topic_created():
     app = core.App()
-    stack = ProjectV1AppStack(app, "project-v1-app")
+    stack = MvpV1AppStack(app, "mvp-v1-app")
     template = assertions.Template.from_stack(stack)
 
     template.resource_count_is("AWS::SNS::Topic", 1)

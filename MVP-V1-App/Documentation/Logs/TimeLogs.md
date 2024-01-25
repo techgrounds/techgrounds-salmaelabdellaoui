@@ -12,6 +12,8 @@ Let's make each day a step closer to success!
   - [January 15, 2024](#january-15-2024)
   - [January 16, 2024](#january-16-2024)
   - [January 17, 2024](#january-17-2024)
+  - [January 18, 2024](#january-18-2024)
+  - [January 19, 2024](#january-19-2024)
 
 
 ## January 08, 2024
@@ -97,3 +99,21 @@ __Tasks completed__
 __Daily report__
 
 Finalizing all exploration epics in github. Completing the design for the infrastructure and start coding in CDK. 
+
+__Tasks completed__
+- All exploration epics are done
+- The design for the infrastructure is in progress 
+- I started coding 
+
+## January 18, 2024
+
+__Daily report__  
+Building the infrastructure as a code. starting with setting up the VPC, region, subnets etc. 
+
+__Tasks completed__  
+- Exploring the CDK environment 
+
+## January 19, 2024
+
+__Daily report__  
+- Setting up the VPC environment in AWS 
