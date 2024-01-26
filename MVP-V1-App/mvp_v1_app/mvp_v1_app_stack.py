@@ -53,6 +53,18 @@ class MvpV1AppStack(Stack):
         self.nat_gateway.add_depends_on(self.elastic_ip) 
         self.create_routes() 
 
+#Add the code to create routes through the VPC peering connection
+# Get the subnets for Frankfurt Availability Zone 1c
+        private_subnet = self.subnet_id_to_subnet_map[config2.PRIVATE_SUBNET_1].ref
+        Private_route_table = self.route_table_id_to_route_table_map[config2.PRIVATE_ROUTE_TABLE_1].ref
+
+        ec2.CfnRoute(
+        self, 'RouteToOtherVPC',
+        route_table_id=Private_route_table,
+        destination_cidr_block='10.10.10.0/24',  # Het CIDR-blok van de andere VPC
+        vpc_peering_connection_id=self.peering_stack.peerconnection.ref,
+        )
+
     def create_route_tables(self):
         """ Create Route Tables """
         for route_table_id in config.ROUTE_TABLES_ID_TO_ROUTES_MAP:
@@ -65,7 +77,6 @@ class MvpV1AppStack(Stack):
                 self, route_table_id, vpc_id=self.private_salma_vpc.vpc_id,
                 tags=[{'key': 'Name', 'value': route_table_id}]
             )
-
 
     def create_routes(self):
         """ Create routes of the Route Tables """
@@ -82,12 +93,6 @@ class MvpV1AppStack(Stack):
                 kwargs['nat_gateway_id'] = self.nat_gateway.ref 
             del kwargs['router_type']
             ec2.CfnRoute(self, f'{route_table_id}-route-{i}', **kwargs)
-
-            # ec2.CfnRoute(
-            # self, "RouteToNATGateway",
-            # route_table_id=config2.PRIVATE_ROUTE_TABLE_1.ref,
-            # vpc_peering_connection_id=self.peering_stack.peerconnection.ref,  
-            # )
 
         
     def create_subnets(self):
@@ -141,11 +146,11 @@ class MvpV1AppStack(Stack):
     def attach_nat_gateway(self) -> ec2.CfnNatGateway:
         """ Create and attach nat gateway to the VPC """
         nat_gateway = ec2.CfnNatGateway(self, config.NAT_GATEWAY,
-        allocation_id=self.elastic_ip.attr_allocation_id,
-        subnet_id=self.subnet_id_to_subnet_map[config.PUBLIC_SUBNET_1].ref,)
+                                        allocation_id=self.elastic_ip.attr_allocation_id,
+                                        subnet_id=self.subnet_id_to_subnet_map[config.PUBLIC_SUBNET_1].ref, )
         return nat_gateway
-             
-
+    
+    
 class NetworkPeeringStack(NestedStack):
         def __init__(
             self,
@@ -161,9 +166,11 @@ class NetworkPeeringStack(NestedStack):
             self.peerconnection = ec2.CfnVPCPeeringConnection(
             self,
             "VPC1toVPC2",
-            vpc_id=vpc_two.vpc_id,
-            peer_vpc_id=vpc_one.vpc_id,
+            vpc_id=vpc_one.vpc_id,
+            peer_vpc_id=vpc_two.vpc_id,
         )
+            
+         
 
 # Create routes in the peered VPCs for traffic flow 
             
@@ -183,5 +190,3 @@ class NetworkPeeringStack(NestedStack):
         #     vpc_peering_connection_id=self.peerconnection.ref,
         # )  
             
-
-

@@ -14,6 +14,10 @@ Let's make each day a step closer to success!
   - [January 17, 2024](#january-17-2024)
   - [January 18, 2024](#january-18-2024)
   - [January 19, 2024](#january-19-2024)
+  - [January 22, 2024](#january-22-2024)
+  - [January 23, 2024](#january-23-2024)
+  - [January 24, 2024](#january-24-2024)
+  - [January 25, 2024](#january-25-2024)
 
 
 ## January 08, 2024
@@ -117,3 +121,24 @@ __Tasks completed__
 
 __Daily report__  
 - Setting up the VPC environment in AWS 
+
+## January 22, 2024
+
+__Daily report__  
+- Setting up the VPC environment in AWS 
+
+## January 23, 2024
+
+__Daily report__  
+- Setting up VPC peering
+
+## January 24, 2024
+
+__Daily report__  
+- Setting up VPC peering 
+
+## January 25, 2024
+
+__Daily report__  
+- Finalizing my Netwerk environment by adding the netwerk ACLs. 
+

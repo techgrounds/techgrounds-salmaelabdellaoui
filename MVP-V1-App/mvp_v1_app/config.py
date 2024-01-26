@@ -56,4 +56,3 @@ SUBNET_CONFIGURATION = {
         'route_table_id': PUBLIC_ROUTE_TABLE,
     } 
 }
-

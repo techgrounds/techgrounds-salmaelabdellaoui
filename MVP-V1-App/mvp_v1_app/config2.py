@@ -18,7 +18,7 @@ ROUTE_TABLES_ID_TO_ROUTES_MAP = {
         {
             'destination_cidr_block': '0.0.0.0/0',
             'nat_gateway_id': config.NAT_GATEWAY,
-            'router_type': ec2.RouterType.NAT_GATEWAY
+            'router_type': ec2.RouterType.NAT_GATEWAY,
         },
     ]
 }
@@ -34,4 +34,3 @@ SUBNET_CONFIGURATION = {
         'route_table_id': PRIVATE_ROUTE_TABLE_1,
     }
 }
-
