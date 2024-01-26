@@ -53,8 +53,7 @@ class MvpV1AppStack(Stack):
         self.nat_gateway.add_depends_on(self.elastic_ip) 
         self.create_routes() 
 
-#Add the code to create routes through the VPC peering connection
-# Get the subnets for Frankfurt Availability Zone 1c
+# Get the subnets and route tables for the VPC peering connection
         private_subnet = self.subnet_id_to_subnet_map[config2.PRIVATE_SUBNET_1].ref
         other_vpc_subnet = self.subnet_id_to_subnet_map[config.PUBLIC_SUBNET_1].ref
         Private_route_table = self.route_table_id_to_route_table_map[config2.PRIVATE_ROUTE_TABLE_1].ref
@@ -63,14 +62,14 @@ class MvpV1AppStack(Stack):
         ec2.CfnRoute(
         self, 'RouteToVPC1',
         route_table_id=Private_route_table,
-        destination_cidr_block='10.10.10.0/24',  # Het CIDR-blok van de andere VPC
+        destination_cidr_block='10.10.10.0/24',  # The CIDR-block of the Public-VPC
         vpc_peering_connection_id=self.peering_stack.peerconnection.ref,
         )
 
         ec2.CfnRoute(
         self, 'RouteToVPC2',
         route_table_id=other_vpc_route_table,
-        destination_cidr_block='10.20.20.0/26',  # Het CIDR-blok van de privé-VPC
+        destination_cidr_block='10.20.20.0/26',  # The CIDR-block of the privé-VPC
         vpc_peering_connection_id=self.peering_stack.peerconnection.ref,
         )
 
@@ -178,24 +177,4 @@ class NetworkPeeringStack(NestedStack):
             vpc_id=vpc_one.vpc_id,
             peer_vpc_id=vpc_two.vpc_id,
         )
-            
-         
-
-# Create routes in the peered VPCs for traffic flow 
-            
-        #     ec2.CfnRoute(
-        #     self,
-        #     "RouteFromVPC1toVPC2",
-        #     destination_cidr_block=vpc_two.vpc_cidr_block,
-        #     route_table_id=vpc_two.private_subnets[0].route_table.route_table_id,
-        #     vpc_peering_connection_id=self.peerconnection.ref,
-        # )
-
-        #     ec2.CfnRoute(
-        #     self,
-        #     "RouteFromVPC2toVPC1",
-        #     destination_cidr_block=vpc_one.vpc_cidr_block,
-        #     route_table_id=vpc_one.public_subnets[0].route_table.route_table_id,
-        #     vpc_peering_connection_id=self.peerconnection.ref,
-        # )  
             
