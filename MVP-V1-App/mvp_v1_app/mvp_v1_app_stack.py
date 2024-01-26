@@ -56,12 +56,21 @@ class MvpV1AppStack(Stack):
 #Add the code to create routes through the VPC peering connection
 # Get the subnets for Frankfurt Availability Zone 1c
         private_subnet = self.subnet_id_to_subnet_map[config2.PRIVATE_SUBNET_1].ref
+        other_vpc_subnet = self.subnet_id_to_subnet_map[config.PUBLIC_SUBNET_1].ref
         Private_route_table = self.route_table_id_to_route_table_map[config2.PRIVATE_ROUTE_TABLE_1].ref
+        other_vpc_route_table = self.route_table_id_to_route_table_map[config.PUBLIC_ROUTE_TABLE].ref
 
         ec2.CfnRoute(
-        self, 'RouteToOtherVPC',
+        self, 'RouteToVPC1',
         route_table_id=Private_route_table,
         destination_cidr_block='10.10.10.0/24',  # Het CIDR-blok van de andere VPC
+        vpc_peering_connection_id=self.peering_stack.peerconnection.ref,
+        )
+
+        ec2.CfnRoute(
+        self, 'RouteToVPC2',
+        route_table_id=other_vpc_route_table,
+        destination_cidr_block='10.20.20.0/26',  # Het CIDR-blok van de privé-VPC
         vpc_peering_connection_id=self.peering_stack.peerconnection.ref,
         )
 
