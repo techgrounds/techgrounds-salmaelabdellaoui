@@ -57,7 +57,7 @@ class MvpV1AppStack(Stack):
         private_subnet = self.subnet_id_to_subnet_map[config2.PRIVATE_SUBNET_1].ref
         other_vpc_subnet = self.subnet_id_to_subnet_map[config.PUBLIC_SUBNET_1].ref
         Private_route_table = self.route_table_id_to_route_table_map[config2.PRIVATE_ROUTE_TABLE_1].ref
-        other_vpc_route_table = self.route_table_id_to_route_table_map[config.PUBLIC_ROUTE_TABLE].ref
+        other_vpc_route_table = self.route_table_id_to_route_table_map[config.PRIVATE_ROUTE_TABLE].ref
 
         ec2.CfnRoute(
         self, 'RouteToVPC1',
@@ -71,6 +71,118 @@ class MvpV1AppStack(Stack):
         route_table_id=other_vpc_route_table,
         destination_cidr_block='10.20.20.0/26',  # The CIDR-block of the privé-VPC
         vpc_peering_connection_id=self.peering_stack.peerconnection.ref,
+        )
+
+# Define NACLs
+        nacl_admin = ec2.CfnNetworkAcl(self, "NaclAdmin",
+        vpc_id=self.Salma_vpc.vpc_id,
+        tags=[{'key': 'Name', 'value': 'NaclAdmin'}]
+        )
+
+        nacl_web = ec2.CfnNetworkAcl(self, "NaclWeb",
+        vpc_id=self.Salma_vpc.vpc_id,
+        tags=[{'key': 'Name', 'value': 'NaclWeb'}]
+        ) 
+
+
+        public_subnet_1 = self.subnet_id_to_subnet_map[config.PUBLIC_SUBNET_1]
+        public_subnet_2 = self.subnet_id_to_subnet_map[config.PUBLIC_SUBNET_2]
+
+# Associate NACLs with subnets
+        ec2.CfnSubnetNetworkAclAssociation(self, "NaclAdminAssociation",
+        subnet_id=public_subnet_2.ref,
+        network_acl_id=nacl_admin.ref
+        ).add_dependency(nacl_admin)
+
+        ec2.CfnSubnetNetworkAclAssociation(self, "NaclWebAssociation",
+        subnet_id=public_subnet_1.ref, 
+        network_acl_id=nacl_web.ref
+        ).add_dependency(nacl_web)
+
+
+        cidr_block = self.subnet_id_to_subnet_map[config.PUBLIC_SUBNET_2].cidr_block
+
+
+# Inbound rule in vpc_web for HTTP traffic
+        ec2.CfnNetworkAclEntry(
+            self,
+            "WebServerNaclInboundHTTP",
+            network_acl_id=nacl_web.ref,
+            rule_number=100,
+            protocol=6,  # TCP
+            rule_action="allow",
+            egress=False,
+            port_range=ec2.CfnNetworkAclEntry.PortRangeProperty(
+                from_=80,
+                to=80
+            ),
+            cidr_block="0.0.0.0/0",
+        )
+
+# Outbound rule in vpc_web for HTTP
+        ec2.CfnNetworkAclEntry(
+            self,
+            "WebServerNaclOutboundHTTP",
+            network_acl_id=nacl_web.ref,
+            rule_number=100,
+            protocol=6,  # TCP
+            rule_action="allow",
+            egress=True,
+            port_range=ec2.CfnNetworkAclEntry.PortRangeProperty(
+                from_=80,
+                to=80
+            ),
+            cidr_block="0.0.0.0/0",
+        )
+
+# Inbound rule in vpc_web for SSH from management server 
+        ec2.CfnNetworkAclEntry(
+            self,
+            "WebServerNaclInboundSSH",
+            network_acl_id=nacl_web.ref,
+            rule_number=300,
+            protocol=6,  # TCP
+            rule_action="allow",
+            egress=False,
+            port_range=ec2.CfnNetworkAclEntry.PortRangeProperty(
+                from_=22,
+                to=22
+            ),
+            cidr_block=cidr_block #Only inbound traffic for SSH from Admin server
+        )
+
+# Add a new inbound rule in vpc_web for RDP from management server
+        ec2.CfnNetworkAclEntry(
+            self,
+            "ManagementServerNaclInboundRDPFromAdmin",
+            network_acl_id=nacl_web.ref,
+            rule_number=400,  
+            protocol=6,  # TCP
+            rule_action="allow",
+            egress=False,
+            port_range=ec2.CfnNetworkAclEntry.PortRangeProperty(
+                from_=3389,
+                to=3389
+            ),
+            cidr_block=cidr_block,  
+        )
+
+        admin_ip = "192.168.178.12/32"
+
+# Add a new inbound rule in vpc_manage for RDP from the admin IP
+        ec2.CfnNetworkAclEntry(
+            self,
+            "ManagementServerNaclInboundRDPFromOwnIPtoAdmin",
+            network_acl_id=nacl_admin.ref,
+            rule_number=500,  
+            protocol=6,  # TCP
+            rule_action="allow",
+            egress=False,
+            port_range=ec2.CfnNetworkAclEntry.PortRangeProperty(
+                from_=3389,
+                to=3389
+            ),
+            cidr_block=admin_ip,  # Your admin IP
         )
 
     def create_route_tables(self):
