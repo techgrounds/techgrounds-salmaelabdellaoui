@@ -5,9 +5,9 @@ In this document, my considirations will be outlined and my decisions will be ex
 
 __Table of contents:__ 
 - [Decision Document](#decision-document)
-  - [Requirements from the product owners](#requirements-from-the-product-owners)
-  - [A clear overview of the assumptions](#a-clear-overview-of-the-assumptions)
-  - [Services for the cloud infrastructure](#services-for-the-cloud-infrastructure)
+	- [Requirements from the product owners](#requirements-from-the-product-owners)
+	- [A clear overview of the assumptions](#a-clear-overview-of-the-assumptions)
+	- [Services for the cloud infrastructure](#services-for-the-cloud-infrastructure)
 
 ## Requirements from the product owners
 Information given by the product owners about the business, the application, and the requirements: 
@@ -90,6 +90,12 @@ Given the statement that protection against attacks and hacking will be handled 
   
 __Manual Updates and Patches__  
 Considering that updates and patches will be manually handled by their internal IT administration personnel, our assumption is that the choice of services will be made in alignment with budget considerations and service costs. This flexibility allows for the selection of services ranging from serverless options, where maintenance tasks are abstracted away, to servers where updates and patches need to be managed independently.    
+
+__Private subnet__  
+Placing workstations in a private subnet enhances security by minimizing direct exposure to the internet, facilitates strict access control through tools like NACLs and Security Groups, enables effective monitoring and logging of network traffic, allows for centralized patch management, and mitigates the risk of malicious activities, providing a more secure and controlled environment within the VPC.
+
+__Infrastructure changes__   
+My changes have been motivated by a desire to streamline the infrastructure and enhance security. By consolidating into a single region, you simplify the overall architecture. Moving the admin server to VPC1 provides a dedicated space for administrative tasks, separated from potential user workstations in VPC2. Placing the webserver in a distinct subnet within VPC1 allows for better isolation and specific control over access. The shift from two public subnets to one private subnet in VPC2 for workstations reinforces security by reducing the exposure of internal resources to the public internet. This restructuring aligns with security best practices, providing a more organized, controlled, and secure network architecture.
 
 *Back to [top](#top)* 
 

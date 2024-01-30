@@ -18,6 +18,8 @@ Let's make each day a step closer to success!
   - [January 23, 2024](#january-23-2024)
   - [January 24, 2024](#january-24-2024)
   - [January 25, 2024](#january-25-2024)
+  - [January 26, 2024](#january-26-2024)
+  - [January 30, 2024](#january-30-2024)
 
 
 ## January 08, 2024
@@ -127,18 +129,40 @@ __Daily report__
 __Daily report__  
 - Setting up the VPC environment in AWS 
 
+__Obstacles__  
+- I changed the given infrastructure to one VPC, but this was not allowed. We had to use VPC peering (for our own learn curve)
+
+
 ## January 23, 2024
 
 __Daily report__  
-- Setting up VPC peering
+- Setting up the right VPC infrastructure
 
 ## January 24, 2024
 
 __Daily report__  
 - Setting up VPC peering 
 
+__Obstacles__
+- The routtabels where not defined by me, so the route table of the VPC peering could not find them. 
+
 ## January 25, 2024
 
 __Daily report__  
-- Finalizing my Netwerk environment by adding the netwerk ACLs. 
+- Finalizing my VPCs and VPC peering 
+- Helping my peers with theire errors
+
+## January 26, 2024
+
+__Daily report__  
+- Learning how to set up Network ACLs   
+- Presentations of group members 
+
+
+## January 30, 2024
+
+__Daily report__
+- Finalizing my network infrastructure by adding the right rules for my network ACLs. 
+- Updating my documentation 
+- Helping my peers with theire errors
 
