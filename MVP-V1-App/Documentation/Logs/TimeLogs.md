@@ -20,6 +20,7 @@ Let's make each day a step closer to success!
   - [January 25, 2024](#january-25-2024)
   - [January 26, 2024](#january-26-2024)
   - [January 30, 2024](#january-30-2024)
+  - [January 31, 2024](#january-31-2024)
 
 
 ## January 08, 2024
@@ -144,13 +145,13 @@ __Daily report__
 - Setting up VPC peering 
 
 __Obstacles__
-- The routtabels where not defined by me, so the route table of the VPC peering could not find them. 
+- The routtabels where not defined by me in the main stack, so the route table of the VPC peering could not find them. 
 
 ## January 25, 2024
 
 __Daily report__  
 - Finalizing my VPCs and VPC peering 
-- Helping my peers with theire errors
+- Helping my peers with their errors
 
 ## January 26, 2024
 
@@ -164,5 +165,15 @@ __Daily report__
 __Daily report__
 - Finalizing my network infrastructure by adding the right rules for my network ACLs. 
 - Updating my documentation 
-- Helping my peers with theire errors
+- Helping my peers with their errors  
+- The Iac code can be found in the mvp_v1_app map 
 
+
+| Status  | User Story | Description | Deliverable |
+| - | - | - | - |
+| Finished | As a customer, I want a working application with which I can deploy a secure network. | The application must build a network that meets all requirements. An example of a stated requirement is that only traffic from trusted sources may access the management server. | IaC code for the network and all components. |
+
+## January 31, 2024
+
+__Daily report__  
+- Starting with the second user stories (adding the webserver to the code) 
