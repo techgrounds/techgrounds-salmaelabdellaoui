@@ -21,6 +21,9 @@ Let's make each day a step closer to success!
   - [January 26, 2024](#january-26-2024)
   - [January 30, 2024](#january-30-2024)
   - [January 31, 2024](#january-31-2024)
+  - [February 01, 2024](#february-01-2024)
+  - [February 02, 2024](#february-02-2024)
+  - [February 05, 2024](#february-05-2024)
 
 
 ## January 08, 2024
@@ -177,3 +180,24 @@ __Daily report__
 
 __Daily report__  
 - Starting with the second user stories (adding the webserver to the code) 
+
+__Obstacles__  
+- The instance could not find the public subnet of my VPC   
+I was able to define my public subnet in my main code and then allocate that definition in my instance code. This worked out for me. I need to do that extra step because I configured my public subnets in a different file. The instance code could not read those, that is why it gave me the error 'no public subnets in this VPC'. 
+
+## February 01, 2024
+
+__Daily report__ 
+
+- I was able to fix the problem with the subnet that could not be found. But I gained another error 'Public Subnet and Security Group belong to different network' 
+- I had a meeting with my booking mentor, He looked with me in my code to try and find out the problem, after almost an hour he was also not able to solve it. 
+
+## February 02, 2024
+__Daily report__   
+- I tried to fix the error, but it did not work out
+- I prepared my presentation and presented what I accomplished and what my problems are. 
+
+## February 05, 2024  
+__Daily report__    
+- In the morning I tried for the last time to fix the problem, but it did not worked out. 
+- I decided to start over using a different contruct for my VPC. 

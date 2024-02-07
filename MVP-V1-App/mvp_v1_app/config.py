@@ -6,7 +6,7 @@ from aws_cdk import (
     aws_ssm as ssm
 )
 # basic VPC configs
-VPC = 'MVP-V1-VPC1'
+VPC = 'Salma_vpc'
 
 INTERNET_GATEWAY = 'internet-gateway'
 NAT_GATEWAY = 'nat-gateway' 
@@ -42,6 +42,7 @@ ROUTE_TABLES_ID_TO_ROUTES_MAP = {
 PUBLIC_SUBNET_1 = 'public-subnet-1'
 PUBLIC_SUBNET_2 = 'public-subnet-2' 
 
+
 SUBNET_CONFIGURATION = {
     PUBLIC_SUBNET_1: {
         'availability_zone': 'eu-central-1a',
@@ -49,6 +50,7 @@ SUBNET_CONFIGURATION = {
         'map_public_ip_on_launch': True,
         'route_table_id': PUBLIC_ROUTE_TABLE,
     },
+    
     PUBLIC_SUBNET_2: {
         'availability_zone': 'eu-central-1b',
         'cidr_block': '10.10.10.128/25',
@@ -56,3 +58,10 @@ SUBNET_CONFIGURATION = {
         'route_table_id': PUBLIC_ROUTE_TABLE,
     } 
 }
+
+# def get_subnet_cidr(subnet_name: str) -> str:
+#     # Voeg de logica toe om het CIDR-blok van het subnet op te halen
+#     if subnet_name == PUBLIC_SUBNET_1:
+#         return "10.10.10.0/24"
+#     elif subnet_name == PUBLIC_SUBNET_2:
+#         return "10.10.11.0/24"

@@ -3,6 +3,7 @@ from aws_cdk import (
     Stack,
     aws_ec2 as ec2,
     NestedStack,
+    CfnTag,
 )
 
 import mvp_v1_app.config as config 
@@ -10,7 +11,7 @@ import mvp_v1_app.config2 as config2
 
 
 class MvpV1AppStack(Stack):
-
+     
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
@@ -21,7 +22,7 @@ class MvpV1AppStack(Stack):
             nat_gateways=0, subnet_configuration=[],
             enable_dns_support=True,
             enable_dns_hostnames=True,
-        )
+        ) 
 
         self.private_salma_vpc = ec2.Vpc(
             self, config2.VPC, ip_addresses=ec2.IpAddresses.cidr('10.20.20.0/24'), max_azs=3,
@@ -29,7 +30,6 @@ class MvpV1AppStack(Stack):
             enable_dns_support=True,
             enable_dns_hostnames=True,
         )
-
 
 # Create a network peering stack which creates peering between the production and management VPCs
         self.peering_stack = NetworkPeeringStack(
@@ -53,9 +53,8 @@ class MvpV1AppStack(Stack):
         self.nat_gateway.add_depends_on(self.elastic_ip) 
         self.create_routes() 
 
-# Get the subnets and route tables for the VPC peering connection
-        private_subnet = self.subnet_id_to_subnet_map[config2.PRIVATE_SUBNET_1].ref
-        other_vpc_subnet = self.subnet_id_to_subnet_map[config.PUBLIC_SUBNET_1].ref
+
+# Get the route tables for the VPC peering connection
         Private_route_table = self.route_table_id_to_route_table_map[config2.PRIVATE_ROUTE_TABLE_1].ref
         other_vpc_route_table = self.route_table_id_to_route_table_map[config.PRIVATE_ROUTE_TABLE].ref
 
@@ -135,7 +134,7 @@ class MvpV1AppStack(Stack):
             cidr_block="0.0.0.0/0",
         )
 
-# Inbound rule in vpc_web for SSH from management server 
+# Inbound rule in vpc_web for SSH from admin server 
         ec2.CfnNetworkAclEntry(
             self,
             "WebServerNaclInboundSSH",
@@ -151,10 +150,10 @@ class MvpV1AppStack(Stack):
             cidr_block=cidr_block #Only inbound traffic for SSH from Admin server
         )
 
-# Add a new inbound rule in vpc_web for RDP from management server
+# Add a new inbound rule in vpc_web for RDP from admin server
         ec2.CfnNetworkAclEntry(
             self,
-            "ManagementServerNaclInboundRDPFromAdmin",
+            "AdminServerNaclInboundRDPFromAdmin",
             network_acl_id=nacl_web.ref,
             rule_number=400,  
             protocol=6,  # TCP
@@ -169,10 +168,10 @@ class MvpV1AppStack(Stack):
 
         admin_ip = "192.168.178.12/32"
 
-# Add a new inbound rule in vpc_manage for RDP from the admin IP
+# Add a new inbound rule in vpc_admin for RDP from the admin IP
         ec2.CfnNetworkAclEntry(
             self,
-            "ManagementServerNaclInboundRDPFromOwnIPtoAdmin",
+            "AdminServerNaclInboundRDPFromOwnIPtoAdmin",
             network_acl_id=nacl_admin.ref,
             rule_number=500,  
             protocol=6,  # TCP
@@ -184,6 +183,77 @@ class MvpV1AppStack(Stack):
             ),
             cidr_block=admin_ip,  # Your admin IP
         )
+
+# # Create a SG for the webserver 
+#         sg_webserver = ec2.SecurityGroup(self,"sg_WebServer", 
+#         vpc = self.Salma_vpc,
+#         description = "sg_webserver",
+#         allow_all_outbound = True,
+#         disable_inline_rules = False,                                                                   
+#         )
+#         sg_webserver.add_ingress_rule(ec2.Peer.ipv4('10.10.10.128/25'), ec2.Port.tcp(22), "Allow SSH trafic from adminServer")
+#         sg_webserver.connections.allow_from_any_ipv4(ec2.Port.tcp(80), "Allow HTTP traffic")
+#         sg_webserver.connections.allow_from(ec2.Peer.ipv4('10.10.10.128/25'), ec2.Port.tcp(22), "Allow SSH trafic from adminServer")
+        
+        # # Create Security Group for Webserver
+        # self.sg_webserver = ec2.SecurityGroup(self, "sg-webserver", vpc_id= self.Salma_vpc.vpc_id, description="Security Group Webserver")
+        
+        # # Allow SG inbound HTTP traffic
+        # self.sg_webserver.add_ingress_rule(
+        #     peer=ec2.Peer.ipv4("0.0.0.0/0"),
+        #     connection=ec2.Port.tcp(80),
+        #     description="Allow HTTP traffic",
+        # )
+
+        # # Allow SG inbound SSH traffic
+        # self.sg_webserver.add_ingress_rule(
+        #     peer=ec2.Peer.ipv4("0.0.0.0/0"),
+        #     connection=ec2.Port.tcp(22),
+        #     description="Allow SSH",
+        # )
+
+# define user data 
+        user_data_webserver = ec2.UserData.for_linux( shebang =  "#!/bin/bash")
+        user_data_webserver.add_commands ( "yum -y install httpd",
+                                "systemctl enable httpd",
+                                 "systemctl start httpd",
+                                """echo '<html><h1>L.S., Welcome on my page, I am looking forward to help you with your problems</h1>
+                                 <b1> I hope you enjoyed our website <b1>                                         
+                                </html>' > /var/www/html/index.html"""
+
+        )
+
+# Create key-pair for SSH connection to the webserver
+        keypair_webserver = ec2.CfnKeyPair(self, "keypair_webserver",
+        key_name= "keypair_webserver",
+        key_type = "rsa",
+        key_format = "pem",
+        tags=[CfnTag(
+        key="name",
+        value="webserver key"
+        )]
+        )
+
+
+# # Create an instance for the webserver (not ready yet)
+#         Instance_Webserver = ec2.Instance(self, "Instance_Webserver", 
+#         vpc=self.Salma_vpc.vpc_id,   
+#         vpc_subnets=ec2.SubnetSelection(subnets=[public_subnet_1]),
+#         instance_type=ec2.InstanceType("t2.micro"),
+#         machine_image=ec2.MachineImage.latest_amazon_linux(
+#         generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2
+#         ), 
+#         security_group=self.sg_webserver,
+#         associate_public_ip_address=True,
+#         user_data=user_data_webserver,
+#         key_name=keypair_webserver.key_name,
+#         block_devices=[ec2.BlockDevice(
+#             device_name="/dev/sdh",
+#             volume=ec2.BlockDeviceVolume.ebs(
+#                 15, encrypted=True, delete_on_termination=True
+#             )
+#         )]
+#     )
 
     def create_route_tables(self):
         """ Create Route Tables """
