@@ -1,33 +1,18 @@
-# Over mij 
-Mijn naam is Salma El Abdellaoui en ik ben een gepassioneerde dame met een voorliefde voor leren en het verkennen van nieuwe technologieën. Ik ben gevestigd in Den Haag en ben voortdurend bezig met het verbeteren van mijn vaardigheden en kennis in de softwareontwikkeling.
+# About me 
+My name is Salma El Abdellaoui, and I am a passionate individual with a love for learning and exploring new technologies. Based in The Hague, I am constantly striving to enhance my skills and knowledge in software development.
 
-## Mijn Repository 
-Stap binnen in mijn digitale wereld, waar mijn projecten tot leven komen. Elk project is doordrenkt met een doel en draagt bij aan iets groots/ kleins.  
+## Explore my Cloud Engineering journey:
 
+Within this repository, you'll find a collection of my completed projects and coursework from my time at Techgrounds.
 
-### Repository structuur 
-Mijn projecten zijn ingedeeld in verschillenden mappen om de structuur georganiseerd te houden:
+AWS CCP Certification and Cloud Proficiency:
 
-```
-Project Naam
- |- 01_Project < Alle projecten  beginnen vanaf 01 en worden daarna op een opeenvolgende manier genummerd
- |- 01.1 templates < Hier vind je de templates
- |- 01.2 includes < Hier worden alle screenshits geplaatst
- |
- |
- |- 02_Project
- |  |- Code
- |  |- Documentatie
- |  |- Log
- |
- |- beschrijvingen:  Indien er snippits aan informatie opgeslagen moet worden, dan kan dat hier 
- Test: Alle testbestanden bevinden zich hier voor het testen van de code 
- |- Docs: In de “Docs” map staan projectdocumentatie en handleidingen
+Having dedicated months to mastering cloud technologies, I successfully attained my AWS Certified Cloud Practitioner certification. Through completing various assignments (folders 01 to 09), I deepened my understanding of cloud concepts and their practical applications.
 
-```
+Final Project Showcase:
 
+My culminating project showcases the synthesis of my learning journey. Leveraging the AWS CDK for Python, I enhanced and automated an existing architecture, showcasing my proficiency in cloud engineering. Dive into my final project to explore my achievements.
 
-### Branch Naming Conventie 
-|- Main: Dit is de hoofdbranch die wordt gebruikt voor stabiele releases   
-|- Feature: Dit is voor functie- branches (bijv. ‘Feature/nieuwe-functionaliteit’)  
-|- Bugfix: Dit is voor branches met bugfixes (bijv. ‘Bugfix/bug-opgelost’) 
+Celebrating Graduation:
+
+I'm thrilled to announce the attainment of my Cloud Engineer diploma, marking the culmination of my rigorous training and dedication to mastering cloud engineering.

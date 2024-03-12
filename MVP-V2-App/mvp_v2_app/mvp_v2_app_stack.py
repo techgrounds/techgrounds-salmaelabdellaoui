@@ -17,19 +17,7 @@ from aws_cdk import (
     CfnOutput,
 )
 import aws_cdk.aws_s3 as s3
- """
- Creates two VPCs, one for the web server and one for the admin server.
- 
- Peers the two VPCs together so they can communicate.
- 
- Gets the route tables and subnets to add routes between the peered VPCs.
- 
- Adds a route from the web server VPC to the admin server VPC CIDR range.
- 
- Adds a route from the admin server VPC to the web server VPC CIDR range.
- 
- This allows instances in each VPC to communicate with each other.
- """
+
  
 class MvpV2AppStack(Stack):
 
@@ -359,7 +347,7 @@ class MvpV2AppStack(Stack):
         webserver_instance = autoscaling.AutoScalingGroup(
             self,"Webserver-instance",
             vpc=self.vpc_webserver,
-            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED),  
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),  
             security_group=sg_webserver,
             role=webserver_role,
             instance_type = ec2.InstanceType.of(
@@ -368,13 +356,6 @@ class MvpV2AppStack(Stack):
                 generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
             user_data=ec2.UserData.custom(self.user_data),
             key_name=keypair_adminIT.key_pair_name,
-            block_devices=[ec2.BlockDevice(
-                device_name="/dev/xvda",                       
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=15,                              
-                    encrypted=True,                            
-                    )
-                )],
             desired_capacity=1,
             min_capacity=1,
             max_capacity=3,
@@ -480,56 +461,56 @@ class MvpV2AppStack(Stack):
             )
         
         
-        # S3 bucket voor database backups
-        backup_bucket = s3.Bucket(self, "BackupBucket",
-        encryption=s3.BucketEncryption.S3_MANAGED,
-                                removal_policy=RemovalPolicy.DESTROY, )
+        # # S3 bucket voor database backups
+        # backup_bucket = s3.Bucket(self, "BackupBucket",
+        # encryption=s3.BucketEncryption.S3_MANAGED,
+        #                         removal_policy=RemovalPolicy.DESTROY, )
 
 
-        # Verbind de KMS key aan de backup bucket
-        DB_role = iam.Role(self, "role-DB",
-            assumed_by=iam.ServicePrincipal("ec2.amazonaws.com")
-        )
-        DB_role.add_to_policy(iam.PolicyStatement(
-            actions=["s3:GetObject", "s3:PutObject"],
-            resources=[backup_bucket.arn_for_objects("*")]
-        ))
+        # # Verbind de KMS key aan de backup bucket
+        # DB_role = iam.Role(self, "role-DB",
+        #     assumed_by=iam.ServicePrincipal("ec2.amazonaws.com")
+        # )
+        # DB_role.add_to_policy(iam.PolicyStatement(
+        #     actions=["s3:GetObject", "s3:PutObject"],
+        #     resources=[backup_bucket.arn_for_objects("*")]
+        # ))
 
-        # Create Security Group for database
-        self.securitygroup_DB = ec2.SecurityGroup(self, "securitygroup_DB",
-            vpc=self.vpc_webserver,
-            description="securitygroup_DB"
-            )
+        # # Create Security Group for database
+        # self.securitygroup_DB = ec2.SecurityGroup(self, "securitygroup_DB",
+        #     vpc=self.vpc_webserver,
+        #     description="securitygroup_DB"
+        #     )
         
-        # Allow trafic from webserver to database
-        self.securitygroup_DB.add_ingress_rule(
-        ec2.Peer.ipv4("10.10.10.0/24"),
-        ec2.Port.tcp(3306)  
-        )
+        # # Allow trafic from webserver to database
+        # self.securitygroup_DB.add_ingress_rule(
+        # ec2.Peer.ipv4("10.10.10.0/24"),
+        # ec2.Port.tcp(3306)  
+        # )
 
-        # Sta verkeer toe van database naar S3  
-        self.securitygroup_DB.add_egress_rule(
-        ec2.Peer.ipv4("3.5.140.0/21"),
-        ec2.Port.tcp(443)
-        )
+        # # Sta verkeer toe van database naar S3  
+        # self.securitygroup_DB.add_egress_rule(
+        # ec2.Peer.ipv4("3.5.140.0/21"),
+        # ec2.Port.tcp(443)
+        # )
 
-        # MySQL RDS instance
-        mysql_db_webserver = rds.DatabaseInstance(
-        self, "MySQLDB",
-        vpc=self.vpc_webserver, 
-        vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
-        engine=rds.DatabaseInstanceEngine.MYSQL,
-        instance_type=ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.MICRO),
-        allocated_storage=20, 
-        iops=300,
-        storage_encrypted=True,
-        multi_az=True,
-        publicly_accessible=False,
-        database_name="mydb-webserver",
-        deletion_protection=False,
-        backup_retention=Duration.days(30),
-        removal_policy=RemovalPolicy.DESTROY, 
-        )
+        # # MySQL RDS instance
+        # mysql_db_webserver = rds.DatabaseInstance(
+        # self, "MySQLDB",
+        # vpc=self.vpc_webserver, 
+        # vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
+        # engine=rds.DatabaseInstanceEngine.MYSQL,
+        # instance_type=ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.MICRO),
+        # allocated_storage=20, 
+        # iops=300,
+        # storage_encrypted=True,
+        # multi_az=True,
+        # publicly_accessible=False,
+        # database_name="mydb-webserver",
+        # deletion_protection=False,
+        # backup_retention=Duration.days(30),
+        # removal_policy=RemovalPolicy.DESTROY, 
+        # )
 
 
   

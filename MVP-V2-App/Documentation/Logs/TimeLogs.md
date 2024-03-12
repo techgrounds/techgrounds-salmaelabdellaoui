@@ -24,6 +24,10 @@ Let's make each day a step closer to success!
   - [February 01, 2024](#february-01-2024)
   - [February 02, 2024](#february-02-2024)
   - [February 05, 2024](#february-05-2024)
+  - [February 06 till February 16 SICK](#february-06-till-february-16-sick)
+  - [February 19, 2024](#february-19-2024)
+    - [V1.0](#v10)
+    - [V1.1](#v11)
 
 
 ## January 08, 2024
@@ -201,3 +205,38 @@ __Daily report__
 __Daily report__    
 - In the morning I tried for the last time to fix the problem, but it did not worked out. 
 - I decided to start over using a different contruct for my VPC. 
+
+## February 06 till February 16 SICK 
+
+## February 19, 2024 
+Because I was missing 2 weeks of working on the project I had to prioritize my tasks. The following user stories where finished within week 8 of 2024. 
+
+### V1.0
+Here are the user stories for the epic V1.0.
+
+| Status | User Story | Description | Deliverable |
+| - | - | - | - |
+| Finished | As a customer, I want a working application with which I can deploy a secure network. | The application must build a network that meets all requirements. An example of a stated requirement is that only traffic from trusted sources may access the management server. | IaC code for the network and all components. |
+| Finished | As a customer I want a working application with which I can deploy a working web server. | The application must start a web server and make it available to the general public. | IaC code for a web server and all supplies. |
+| Finished | As a customer, I want a working application with which I can deploy a working management server. | The application must start a management server and make it available to a limited audience. | IaC code for a management server with all the necessities. |
+| Finished | As a customer I want a storage solution in which bootstrap/post-deployment script can be stored. | There must be a location available where bootstrap scripts become available. This script should not be publicly accessible. | IaC code for a script storage solution. |
+| Finished | As a customer, I want all my data in the infrastructure to be encrypted. | Much value is attached to the security of data at rest and in motion. All data must be encrypted. | IaC code for encryption facilities. |
+| Finished | As a customer, I want to have a backup every day that is retained for 7 days. | The customer would like to have a backup available should it be necessary to restore the servers to a previous state. (Make sure the Backup actually works) | IaC code for backup facilities. |
+| 7 | As a customer I want to know how I can use the application. | Make sure the customer can understand how to use the application. Make sure it is clear what the customer must configure before the deployment can start and which arguments the program needs. | Documentation for using the application. |
+| 8 | As a customer, I want to be able to deploy an MVP for testing. | The customer wants to test your architecture internally before using the code in production. Ensure that configuration is available that allows the customer to deploy an MVP. | Configuration for an MVP deployment. |
+<br>
+
+### V1.1
+Here are the user stories for the epic V1.1.
+
+|  | Status | Description | Deliverable |
+| - | - | - | - |
+| 1 | Finished | The web server must no longer be "naked" on the internet. The customer would prefer to see a proxy intervene. The server will also no longer need to have a public IP address. | IaC code |
+| 2 | Finished | If a user connects to the load balancer via HTTP, this connection should be automatically upgraded to HTTPS. | IaC code |
+| 3 | Finished | The connection must be secured with at least TLS 1.2 or higher. | IaC code |
+| 4 | Finished | The web server must undergo a health check on a regular basis. If the web server fails this health check, the server should be automatically restored. | IaC code |
+| 5 | Finished | If the web server comes under persistent load, a temporary additional server should be started. | IaC code |
+|  | As a customer I want to know how I can use the application. | Make sure the customer can understand how to use the application. Make sure it is clear what the customer must configure before the deployment can start and which arguments the program needs. | Documentation for using the application. |
+|  | As a customer, I want to be able to deploy an MVP for testing. | The customer wants to test your architecture internally before using the code in production. Ensure that configuration is available that allows the customer to deploy an MVP. | Configuration for an MVP deployment. |
+<br>
+
