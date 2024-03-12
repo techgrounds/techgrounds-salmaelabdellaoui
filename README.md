@@ -7,9 +7,9 @@ Within this repository, you'll find a collection of my completed projects and co
 
 AWS CCP Certification and Cloud Proficiency:
 
-Having dedicated months to mastering cloud technologies, I successfully attained my AWS Certified Cloud Practitioner certification. Through completing various assignments (folders 01 to 09), I deepened my understanding of cloud concepts and their practical applications.
+Having dedicated months to mastering cloud technologies, I successfully attained my AWS Certified Cloud Practitioner certification. Through completing various assignments (folders 01 to 09 in map Beginners-Project), I deepened my understanding of cloud concepts and their practical applications.
 
-Final Project Showcase:
+Final Project Showcase (MVP-V2-APP):
 
 My culminating project showcases the synthesis of my learning journey. Leveraging the AWS CDK for Python, I enhanced and automated an existing architecture, showcasing my proficiency in cloud engineering. Dive into my final project to explore my achievements.
 
